@@ -1,8 +1,4 @@
 local opts = { noremap = true, silent = true }
-
---local term_opts = { silent = true }
-
--- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
 --Remap space as leader key
@@ -46,3 +42,13 @@ keymap("n", "<leader>e", ":Neotree toggle<CR>", opts)
 
 -- telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
+
+-- yabs
+keymap("n", "<leader>r", ":YabsDefaultTask<CR>", opts)
+keymap(
+	"n",
+	"<leader>fa",
+	"<cmd>lua local task = vim.fn.input('Enter task name: '); vim.cmd(':YabsTask ' .. task)<cr>",
+	opts
+)

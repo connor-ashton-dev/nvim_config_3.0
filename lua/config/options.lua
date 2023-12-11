@@ -1,7 +1,7 @@
 vim.opt.guicursor = ""
 vim.opt.shell = "/bin/sh"
--- make cursor more opaque but not blink
-vim.opt.guicursor = "a:Cursor/lCursor"
+-- make cursor not blink
+vim.opt.guicursor = "a:Cursor/Cursor"
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
