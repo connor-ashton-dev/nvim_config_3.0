@@ -43,7 +43,7 @@ return {
 		dashboard.section.buttons.val = {
 			-- ["e"] = { ":NvimTreeToggle<CR>", "Explorer" },
 			dashboard.button("f", "  Search", ":Telescope find_files <CR>"),
-			dashboard.button("e", "  Explorer", ":NvimTreeToggle<CR>"),
+			dashboard.button("e", "  Explorer", ":Neotree toggle<CR>"),
 			-- dashboard.button("p", "󰣪  Project", ":Telescope projects <CR>"),
 			dashboard.button("r", "󰥔  Recents", ":Telescope oldfiles <CR>"),
 			dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
@@ -56,8 +56,8 @@ return {
 			"",
 			-- formatted_date .. " | " .. get_battery_macos() .. " | " .. get_weather("Provo", "0074c776238afb9f7277773cc5cbc742"),
 			formatted_date
-			.. " | "
-			.. get_battery_macos(),
+				.. " | "
+				.. get_battery_macos(),
 		}
 		dashboard.section.buttons.opts.hl = "Number"
 		dashboard.section.header.opts.hl = "Type"

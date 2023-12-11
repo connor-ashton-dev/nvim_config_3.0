@@ -55,7 +55,6 @@ return {
 				"black",
 				"eslint_d",
 				-- "gofmt",
-				"rustfmt",
 				"flake8",
 			},
 		})
