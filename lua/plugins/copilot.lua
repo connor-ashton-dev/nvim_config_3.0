@@ -12,7 +12,7 @@ local enable_ai = function()
 	-- else
 	-- 	return true
 	-- end
-	return true
+	return false
 end
 
 return {

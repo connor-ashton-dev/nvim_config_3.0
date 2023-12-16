@@ -44,6 +44,12 @@ return {
 								vim.cmd([[1TermExec cmd="go run ."]])
 							end,
 						},
+						lint = {
+							command = "golangci-lint run",
+							output = function()
+								vim.cmd([[1TermExec cmd="golangci-lint run"]])
+							end,
+						},
 						build_and_run = {
 							command = "go build .; go run .", -- Run the current Go file
 							output = function()

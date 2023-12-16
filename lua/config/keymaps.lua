@@ -27,6 +27,8 @@ keymap("n", "<leader>w", ":w<CR>", opts)
 keymap("n", "<leader>K", ":xa!<CR>", opts)
 --kinda quit
 keymap("n", "<leader>q", ":q!<CR>", opts)
+--undotree
+keymap("n", "<leader>u", ":UndotreeToggle<CR>", opts)
 
 --keeps current item in buffer when you past over something
 keymap("x", "<leader>p", [["_dP]], opts)
@@ -43,6 +45,13 @@ keymap("n", "<leader>e", ":Neotree toggle<CR>", opts)
 -- telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>fs", ":Telescope spell_suggest<CR>", opts)
+
+-- copilot
+keymap("n", "<leader>gcs", ":Copilot status<CR>", opts)
+keymap("n", "<leader>gce", ":Copilot enable<CR>", opts)
+keymap("n", "<leader>gcd", ":Copilot disable<CR>", opts)
+keymap("n", "<leader>gcp", ":Copilot panel<CR>", opts)
 
 -- yabs
 keymap("n", "<leader>r", ":YabsDefaultTask<CR>", opts)
