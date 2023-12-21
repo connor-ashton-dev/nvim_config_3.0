@@ -46,6 +46,7 @@ keymap("n", "<leader>e", ":Neotree toggle<CR>", opts)
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fs", ":Telescope spell_suggest<CR>", opts)
+keymap("n", "<leader>fr", ":Telescope lsp_references<CR>", opts)
 
 -- copilot
 keymap("n", "<leader>gcs", ":Copilot status<CR>", opts)
@@ -61,3 +62,6 @@ keymap(
 	"<cmd>lua local task = vim.fn.input('Enter task name: '); vim.cmd(':YabsTask ' .. task)<cr>",
 	opts
 )
+
+-- editor stuff
+keymap("n", "<leader>vr", ":set relativenumber!<CR>", opts)

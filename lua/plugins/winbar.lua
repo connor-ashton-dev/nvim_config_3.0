@@ -29,6 +29,7 @@ return {
 				"packer",
 				"neogitstatus",
 				"NvimTree",
+				"neo-tree",
 				"Trouble",
 				"alpha",
 				"lir",

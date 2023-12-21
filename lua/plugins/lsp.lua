@@ -57,6 +57,7 @@ return {
 			lspconfig.gopls.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.tsserver.setup({
 				capabilities = capabilities,
 				on_attach = function(client)

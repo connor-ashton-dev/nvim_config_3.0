@@ -1,6 +1,6 @@
 return {
 	"Mofiqul/dracula.nvim",
 	opts = {
-		transparent_bg = false, -- default false
+		transparent_bg = true, -- default false
 	},
 }
