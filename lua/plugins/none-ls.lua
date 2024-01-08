@@ -14,29 +14,28 @@ return {
 
 		mason_null_ls.setup({
 			ensure_installed = {
-				"prettier", -- prettier formatter
-				"stylua", -- lua formatter
-				"black", -- python formatter
-				"pylint", -- python linter
-				"eslint_d", -- js linter
+				"prettier",
+				"stylua",
+				"black",
+				"astyle",
+				"gofmt",
+				"pylint",
+				"eslint_d",
+				"flake8",
+				"golangci_lint",
 			},
 		})
 
-		-- for conciseness
 		local formatting = null_ls.builtins.formatting -- to setup formatters
 		local diagnostics = null_ls.builtins.diagnostics -- to setup linters
 
 		-- to setup format on save
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-		-- configure null_ls
 		null_ls.setup({
 			-- add package.json as identifier for root (for typescript monorepos)
 			root_dir = null_ls_utils.root_pattern(".null-ls-root", "Makefile", ".git", "package.json"),
-			-- setup formatters & linters
 			sources = {
-				--  to disable file types use
-				--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
 				formatting.prettier.with({
 					extra_args = { "--double-quote", "--jsx-double-quote" },
 					extra_filetypes = { "svelte" },
@@ -50,14 +49,18 @@ return {
 					command = "npx",
 					args = { "primsa", "format", "$FILENAME" },
 				}),
-				formatting.rustfmt,
+				formatting.rustfmt.with({
+					extra_args = { "--edition=2021" },
+				}),
 				formatting.stylua,
+
 				diagnostics.eslint_d.with({ -- js/ts linter
 					condition = function(utils)
 						return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
 					end,
 				}),
 				diagnostics.flake8,
+				diagnostics.golangci_lint,
 			},
 			-- configure format on save
 			on_attach = function(current_client, bufnr)
