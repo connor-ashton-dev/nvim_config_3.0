@@ -1,5 +1,5 @@
 local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
@@ -65,3 +65,14 @@ keymap(
 
 -- editor stuff
 keymap("n", "<leader>vr", ":set relativenumber!<CR>", opts)
+
+-- lsp stuff
+local function toggle_virtual_text()
+	local current_config = vim.diagnostic.config()
+	current_config.virtual_text = not current_config.virtual_text
+	vim.diagnostic.config(current_config)
+end
+
+keymap("n", "<leader>lt", function()
+	toggle_virtual_text()
+end, { noremap = true })
