@@ -169,7 +169,7 @@ return {
 						lint = {
 							command = "",
 							output = function()
-								vim.cmd([[1TermExec cmd="cargo clippy"]])
+								vim.cmd([[1TermExec cmd="cargo clean && cargo clippy -- -W clippy::pedantic"]])
 							end,
 						},
 						doc = {

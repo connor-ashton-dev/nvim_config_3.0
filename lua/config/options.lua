@@ -64,4 +64,4 @@ vim.opt.updatetime = 750
 vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
 vim.opt.shortmess = vim.opt.shortmess + { c = true }
 
-vim.cmd([[colorscheme dracula]])
+vim.cmd([[colorscheme gruvbox]])

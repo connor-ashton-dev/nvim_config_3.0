@@ -22,7 +22,7 @@ return {
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
 		build = ":Copilot auth",
-		event = { "BufReadPre", "BufNewFile" },
+		event = "InsertEnter",
 		config = function()
 			require("copilot").setup({
 				panel = {
@@ -33,7 +33,12 @@ return {
 					enabled = true,
 					auto_trigger = true,
 					keymap = {
-						accept = "<TAB>",
+						accept = "<C-y>",
+						accept_word = false,
+						accept_line = false,
+						next = "<M-]>",
+						prev = "<M-[>",
+						dismiss = "<C-]>",
 					},
 				},
 			})
