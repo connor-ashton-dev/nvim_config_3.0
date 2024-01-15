@@ -31,6 +31,9 @@ return {
 			"                                                     ",
 			"                                                     ",
 			"                                                     ",
+			"                                                     ",
+			"                                                     ",
+			"                                                     ",
 			"  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
 			"  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
 			"  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
@@ -50,18 +53,18 @@ return {
 			dashboard.button("q", "󱠡  Quit Neovim", ":qa<CR>"),
 		}
 
-		dashboard.section.footer.val = {
-			"",
-			"",
-			"",
-			-- formatted_date .. " | " .. get_battery_macos() .. " | " .. get_weather("Provo", "0074c776238afb9f7277773cc5cbc742"),
-			formatted_date
-				.. " | "
-				.. get_battery_macos(),
-		}
-		dashboard.section.buttons.opts.hl = "Number"
-		dashboard.section.header.opts.hl = "Type"
-		dashboard.section.footer.opts.hl = "Number"
+		-- dashboard.section.footer.val = {
+		-- 	"",
+		-- 	"",
+		-- 	"",
+		-- 	-- formatted_date .. " | " .. get_battery_macos() .. " | " .. get_weather("Provo", "0074c776238afb9f7277773cc5cbc742"),
+		-- 	formatted_date
+		-- 		.. " | "
+		-- 		.. get_battery_macos(),
+		-- }
+		-- dashboard.section.buttons.opts.hl = "Number"
+		-- dashboard.section.header.opts.hl = "Type"
+		-- dashboard.section.footer.opts.hl = "Number"
 
 		dashboard.opts.opts.noautocmd = true
 		-- vim.cmd([[autocmd User AlphaReady echo 'ready']])
