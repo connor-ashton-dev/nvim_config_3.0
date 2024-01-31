@@ -1,10 +1,12 @@
 vim.opt.guicursor = ""
 vim.opt.shell = "/bin/sh"
+
 -- make cursor not blink
 vim.opt.guicursor = "a:Cursor/Cursor"
 
-vim.opt.nu = true
 vim.opt.relativenumber = true
+vim.opt.nu = true
+
 vim.g.editorconfig = true
 --sets clipboard to system
 vim.api.nvim_set_option("clipboard", "unnamed")

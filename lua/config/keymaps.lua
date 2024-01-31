@@ -1,6 +1,5 @@
 local opts = { noremap = true, silent = true }
 
-local loud_opts = { noremap = true, silent = false }
 local keymap = vim.keymap.set
 
 --Remap space as leader key
@@ -79,4 +78,4 @@ end
 keymap("n", "<leader>lt", function()
 	toggle_virtual_text()
 end, { noremap = true })
-keymap("n", "<leader>lr", ":LspRestart<CR>:echo 'LSP Restarted'<CR>", opts)
+keymap("n", "<leader>lr", ":LspRestart<CR>:echo 'LSP Restarted.'<CR>", opts)
