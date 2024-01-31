@@ -12,7 +12,8 @@ return {
 			local treesitter = require("nvim-treesitter.configs")
 
 			-- configure treesitter
-			treesitter.setup({ -- enable syntax highlighting
+			-- enable syntax highlighting
+			treesitter.setup({
 				highlight = {
 					enable = true,
 				},
@@ -42,7 +43,7 @@ return {
 					"vim",
 					"dockerfile",
 					"gitignore",
-					"query",
+					-- "query",
 				},
 				incremental_selection = {
 					enable = true,

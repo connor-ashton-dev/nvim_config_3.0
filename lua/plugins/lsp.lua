@@ -5,6 +5,7 @@ return {
 		-- cmd = { "LspInfo", "LspInstall", "LspUninstall" },
 		dependencies = {
 			{ "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
+			"hrsh7th/cmp-nvim-lsp",
 			{ "folke/neodev.nvim", opts = {} },
 		},
 		config = function()

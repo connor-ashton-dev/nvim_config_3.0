@@ -21,11 +21,15 @@ return {
 					tasks = {
 						run = {
 							command = "python3 %", -- Assuming you're using python3
-							output = "terminal",
+							output = function()
+								vim.cmd([[1TermExec cmd="python3 %"]])
+							end,
 						},
 						lint = {
 							command = "pylint %", -- Run pylint for linting
-							output = "quickfix",
+							output = function()
+								vim.cmd([[1TermExec cmd="pylint %"]])
+							end,
 						},
 					},
 				},

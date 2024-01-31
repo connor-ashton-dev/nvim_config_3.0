@@ -1,4 +1,6 @@
 local opts = { noremap = true, silent = true }
+
+local loud_opts = { noremap = true, silent = false }
 local keymap = vim.keymap.set
 
 --Remap space as leader key
@@ -47,6 +49,7 @@ keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fs", ":Telescope spell_suggest<CR>", opts)
 keymap("n", "<leader>fr", ":Telescope lsp_references<CR>", opts)
+keymap("n", "<leader>vk", ":Telescope keymaps<CR>", opts)
 
 -- copilot
 keymap("n", "<leader>gcs", ":Copilot status<CR>", opts)
@@ -76,3 +79,4 @@ end
 keymap("n", "<leader>lt", function()
 	toggle_virtual_text()
 end, { noremap = true })
+keymap("n", "<leader>lr", ":LspRestart<CR>:echo 'LSP Restarted'<CR>", opts)
