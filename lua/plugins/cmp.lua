@@ -1,6 +1,7 @@
 return {
 	"hrsh7th/nvim-cmp",
-	event = "InsertEnter",
+	event = { "InsertEnter", "LspAttach" },
+	fix_pairs = true,
 	dependencies = {
 		"hrsh7th/cmp-buffer", -- source for text in buffer
 		"hrsh7th/cmp-path", -- source for file system paths
@@ -23,6 +24,24 @@ return {
 			completion = {
 				completeopt = "menu,menuone,preview,noselect",
 			},
+			sorting = {
+				priority_weight = 2,
+				comparators = {
+					require("copilot_cmp.comparators").prioritize,
+
+					-- Below is the default comparitor list and order for nvim-cmp
+					cmp.config.compare.offset,
+					-- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+					cmp.config.compare.exact,
+					cmp.config.compare.score,
+					cmp.config.compare.recently_used,
+					cmp.config.compare.locality,
+					cmp.config.compare.kind,
+					cmp.config.compare.sort_text,
+					cmp.config.compare.length,
+					cmp.config.compare.order,
+				},
+			},
 			snippet = { -- configure how nvim-cmp interacts with snippet engine
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
@@ -44,6 +63,7 @@ return {
 			-- sources for autocompletion
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
+				{ name = "copilot" },
 				{ name = "luasnip" }, -- snippets
 				{ name = "buffer" }, -- text within current buffer
 				{ name = "path" }, -- file system paths
@@ -54,6 +74,7 @@ return {
 					mode = "symbol",
 					maxwidth = 50,
 					ellipsis_char = "...",
+					symbol_map = { Copilot = "" },
 				}),
 			},
 			window = {

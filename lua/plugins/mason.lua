@@ -42,6 +42,7 @@ return {
 				"dockerls",
 				"prismals",
 				"clangd",
+				"htmx",
 				"marksman",
 			},
 			-- auto-install configured servers (with lspconfig)

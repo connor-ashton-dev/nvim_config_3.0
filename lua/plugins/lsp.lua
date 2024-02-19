@@ -17,12 +17,20 @@ return {
 				capabilities = capabilities,
 			})
 
+			lspconfig.astro.setup({
+				capabilities = capabilities,
+			})
+
 			lspconfig.prismals.setup({
 				capabilities = capabilities,
 			})
 
 			lspconfig.sourcekit.setup({
 				cmd = { "/Library/Developer/CommandLineTools/usr/bin/sourcekit-lsp" },
+				capabilities = capabilities,
+			})
+
+			lspconfig.htmx.setup({
 				capabilities = capabilities,
 			})
 
@@ -151,7 +159,7 @@ return {
 					vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 					vim.keymap.set("n", "ca", vim.lsp.buf.code_action, opts)
 					vim.keymap.set("n", "H", vim.lsp.buf.hover, opts)
-					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+					-- vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 					vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
 					vim.keymap.set("n", "gn", vim.diagnostic.goto_next, opts)
 					vim.keymap.set("n", "gp", vim.diagnostic.goto_prev, opts)

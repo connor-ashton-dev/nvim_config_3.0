@@ -38,7 +38,7 @@ return {
 			sources = {
 				formatting.prettier.with({
 					extra_args = { "--double-quote", "--jsx-double-quote" },
-					extra_filetypes = { "svelte" },
+					extra_filetypes = { "svelte", "astro" },
 				}),
 				formatting.black.with({ extra_args = { "--fast" } }),
 				formatting.astyle,
@@ -54,11 +54,12 @@ return {
 				}),
 				formatting.stylua,
 
-				diagnostics.eslint_d.with({ -- js/ts linter
-					condition = function(utils)
-						return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
-					end,
-				}),
+				diagnostics.eslint_d,
+				-- diagnostics.eslint_d.with({ -- js/ts linter
+				-- 	condition = function(utils)
+				-- 		return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
+				-- 	end,
+				-- }),
 				diagnostics.flake8,
 				diagnostics.golangci_lint,
 			},
