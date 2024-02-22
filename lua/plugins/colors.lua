@@ -6,11 +6,18 @@
 -- }
 
 --INFO: DRACULA
+-- return {
+-- 	"Mofiqul/dracula.nvim",
+-- 	opts = {
+-- 		transparent_bg = false, -- default false
+-- 	},
+-- }
+
+--INFO: ROSE PINE
 return {
-	"Mofiqul/dracula.nvim",
-	opts = {
-		transparent_bg = false, -- default false
-	},
+	"rose-pine/neovim",
+	name = "rose-pine",
+	opts = {},
 }
 
 --INFO: GRUVBOX

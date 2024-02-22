@@ -1,8 +1,10 @@
+vim.cmd([[colorscheme rose-pine]])
+
 vim.opt.guicursor = ""
 vim.opt.shell = "/bin/sh"
 
 -- make cursor not blink
-vim.opt.guicursor = "a:Cursor/Cursor"
+-- vim.opt.guicursor = "a:Cursor/Cursor"
 
 vim.opt.relativenumber = true
 vim.opt.nu = true
@@ -65,5 +67,3 @@ vim.opt.updatetime = 750
 
 vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
 vim.opt.shortmess = vim.opt.shortmess + { c = true }
-
-vim.cmd([[colorscheme dracula]])
