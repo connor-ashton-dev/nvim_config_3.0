@@ -5,6 +5,7 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-buffer", -- source for text in buffer
 		"hrsh7th/cmp-path", -- source for file system paths
+		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"L3MON4D3/LuaSnip", -- snippet engine
 		"saadparwaiz1/cmp_luasnip", -- for autocompletion
 		"rafamadriz/friendly-snippets", -- useful snippets
@@ -24,24 +25,24 @@ return {
 			completion = {
 				completeopt = "menu,menuone,preview,noselect",
 			},
-			sorting = {
-				priority_weight = 2,
-				comparators = {
-					require("copilot_cmp.comparators").prioritize,
-
-					-- Below is the default comparitor list and order for nvim-cmp
-					cmp.config.compare.offset,
-					-- cmp.config.compare.scopes, --this is commented in nvim-cmp too
-					cmp.config.compare.exact,
-					cmp.config.compare.score,
-					cmp.config.compare.recently_used,
-					cmp.config.compare.locality,
-					cmp.config.compare.kind,
-					cmp.config.compare.sort_text,
-					cmp.config.compare.length,
-					cmp.config.compare.order,
-				},
-			},
+			-- sorting = {
+			-- 	priority_weight = 2,
+			-- 	comparators = {
+			-- 		require("copilot_cmp.comparators").prioritize,
+			--
+			-- 		-- Below is the default comparitor list and order for nvim-cmp
+			-- 		cmp.config.compare.offset,
+			-- 		-- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+			-- 		cmp.config.compare.exact,
+			-- 		cmp.config.compare.score,
+			-- 		cmp.config.compare.recently_used,
+			-- 		cmp.config.compare.locality,
+			-- 		cmp.config.compare.kind,
+			-- 		cmp.config.compare.sort_text,
+			-- 		cmp.config.compare.length,
+			-- 		cmp.config.compare.order,
+			-- 	},
+			-- },
 			snippet = { -- configure how nvim-cmp interacts with snippet engine
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
@@ -62,8 +63,9 @@ return {
 			}),
 			-- sources for autocompletion
 			sources = cmp.config.sources({
-				{ name = "copilot", group_index = 2 },
+				-- { name = "copilot", group_index = 2 },
 				{ name = "nvim_lsp", group_index = 2 },
+				{ name = "nvim_lsp_signature_help", group_index = 2 },
 				{ name = "luasnip", group_index = 2 }, -- snippets
 				{ name = "buffer", group_index = 2 }, -- text within current buffer
 				{ name = "path", group_index = 2 }, -- file system paths
@@ -74,7 +76,7 @@ return {
 					mode = "symbol",
 					maxwidth = 50,
 					ellipsis_char = "...",
-					symbol_map = { Copilot = "" },
+					-- symbol_map = { Copilot = "" },
 				}),
 			},
 			window = {

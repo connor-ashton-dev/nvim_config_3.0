@@ -1,4 +1,7 @@
-vim.cmd([[colorscheme rose-pine]])
+vim.cmd([[colorscheme tokyonight]])
+
+-- disable copilot silently
+vim.cmd([[silent! Copilot disable]])
 
 vim.opt.guicursor = ""
 vim.opt.shell = "/bin/sh"
@@ -39,7 +42,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 vim.api.nvim_create_autocmd("CmdlineLeave", {
 	callback = function()
-		vim.fn.timer_start(8000, function()
+		vim.fn.timer_start(4000, function()
 			vim.cmd([[ echon ' ' ]])
 		end)
 	end,
