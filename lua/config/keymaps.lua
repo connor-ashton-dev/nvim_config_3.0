@@ -82,3 +82,13 @@ keymap("n", "<leader>lt", function()
 end, { noremap = true })
 keymap("n", "<leader>lr", ":LspRestart<CR>:echo 'LSP Restarted.'<CR>", opts)
 keymap("n", "<leader>t", ":TroubleToggle<CR>", opts)
+
+-- toggleterm
+local Terminal = require("toggleterm.terminal").Terminal
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+
+function _lazygit_toggle()
+	lazygit:toggle()
+end
+
+vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
