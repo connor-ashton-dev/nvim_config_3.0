@@ -1,7 +1,7 @@
 return {
 	"hrsh7th/nvim-cmp",
 	event = { "InsertEnter", "LspAttach" },
-	fix_pairs = true,
+	-- fix_pairs = true,
 	dependencies = {
 		"hrsh7th/cmp-buffer", -- source for text in buffer
 		"hrsh7th/cmp-path", -- source for file system paths

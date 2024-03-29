@@ -42,7 +42,9 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 --explorer
-keymap("n", "<leader>e", ":Neotree toggle<CR>", opts)
+keymap("n", "<leader>e", function()
+	require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
+end, opts)
 
 -- telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
@@ -80,15 +82,21 @@ end
 keymap("n", "<leader>lt", function()
 	toggle_virtual_text()
 end, { noremap = true })
+
 keymap("n", "<leader>lr", ":LspRestart<CR>:echo 'LSP Restarted.'<CR>", opts)
 keymap("n", "<leader>t", ":TroubleToggle<CR>", opts)
-
--- toggleterm
-local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
-
-function _lazygit_toggle()
-	lazygit:toggle()
+local lint_progress = function()
+	local linters = require("lint").get_running()
+	if #linters == 0 then
+		return "󰦕"
+	end
+	return "󱉶 " .. table.concat(linters, ", ")
 end
 
-vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+keymap("n", "<leader>ll", function()
+	print("Linters: " .. lint_progress())
+end, opts)
+
+-- lazygit
+
+keymap("n", "<leader>gg", ":LazyGit<CR>", opts)

@@ -1,7 +1,4 @@
-vim.cmd([[colorscheme tokyonight]])
-
--- disable copilot silently
-vim.cmd([[silent! Copilot disable]])
+vim.cmd([[colorscheme rose-pine]])
 
 vim.opt.guicursor = ""
 vim.opt.shell = "/bin/sh"
@@ -18,7 +15,7 @@ vim.api.nvim_set_option("clipboard", "unnamed")
 
 vim.opt.ignorecase = false
 
-vim.opt.expandtab = false
+vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
