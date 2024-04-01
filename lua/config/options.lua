@@ -37,13 +37,13 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("CmdlineLeave", {
-	callback = function()
-		vim.fn.timer_start(4000, function()
-			vim.cmd([[ echon ' ' ]])
-		end)
-	end,
-})
+-- vim.api.nvim_create_autocmd("CmdlineLeave", {
+-- 	callback = function()
+-- 		vim.fn.timer_start(4000, function()
+-- 			vim.cmd([[ echon ' ' ]])
+-- 		end)
+-- 	end,
+-- })
 
 vim.opt.wrap = false
 vim.opt.linebreak = false

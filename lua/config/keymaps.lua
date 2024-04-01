@@ -1,5 +1,5 @@
 local opts = { noremap = true, silent = true }
-local noisy_opts = { noremap = true, silent = false }
+-- local noisy_opts = { noremap = true, silent = false }
 
 local keymap = vim.keymap.set
 
@@ -8,8 +8,8 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
---MOVES BLOCKS OF TEXT
 keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
+--MOVES BLOCKS OF TEXT
 keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
 
 --KEEPS CURSOR IN THE MIDDLE OF SCREEN WHEN...

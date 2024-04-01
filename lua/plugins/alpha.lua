@@ -46,7 +46,11 @@ return {
 		dashboard.section.buttons.val = {
 			-- ["e"] = { ":NvimTreeToggle<CR>", "Explorer" },
 			dashboard.button("f", "  Search", ":Telescope find_files <CR>"),
-			dashboard.button("e", "  Explorer", ":Neotree toggle<CR>"),
+			dashboard.button(
+				"e",
+				"  Explorer",
+				":lua require('neo-tree.command').execute({ toggle = true, dir = vim.uv.cwd() }) <CR>"
+			),
 			-- dashboard.button("p", "󰣪  Project", ":Telescope projects <CR>"),
 			dashboard.button("r", "󰥔  Recents", ":Telescope oldfiles <CR>"),
 			dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
