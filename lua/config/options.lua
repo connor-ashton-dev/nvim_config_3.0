@@ -1,4 +1,5 @@
 vim.cmd([[colorscheme rose-pine]])
+vim.cmd([[Copilot disable]])
 
 vim.opt.guicursor = ""
 vim.opt.shell = "/bin/sh"
@@ -11,7 +12,7 @@ vim.opt.nu = true
 
 vim.g.editorconfig = true
 --sets clipboard to system
-vim.api.nvim_set_option("clipboard", "unnamed")
+vim.opt.clipboard = "unnamed"
 
 vim.opt.ignorecase = false
 

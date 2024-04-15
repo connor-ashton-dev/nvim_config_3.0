@@ -13,12 +13,17 @@
 -- 	},
 -- }
 
---INFO: ROSE PINE
+-- INFO: ROSE PINE
 return {
 	"rose-pine/neovim",
 	name = "rose-pine",
 	opts = {},
 }
+
+--INFO: GRUVBOX MATERIAL
+-- return {
+-- 	"sainnhe/gruvbox-material",
+-- }
 
 --INFO: GRUVBOX
 -- return {

@@ -13,60 +13,79 @@ return {
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			-- local util = require("lspconfig/util")
 
+			local function on_attach(client, bufnr)
+				if vim.lsp.inlay_hint then
+					vim.lsp.inlay_hint.enable(0, true)
+				end
+			end
+
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
+				on_attach = on_attach,
 			})
 
 			lspconfig.prismals.setup({
 				capabilities = capabilities,
+				on_attach = on_attach,
 			})
 
 			lspconfig.sourcekit.setup({
 				cmd = { "/Library/Developer/CommandLineTools/usr/bin/sourcekit-lsp" },
 				capabilities = capabilities,
+				on_attach = on_attach,
 			})
 
 			lspconfig.htmx.setup({
 				capabilities = capabilities,
+				on_attach = on_attach,
 			})
 
 			lspconfig.dockerls.setup({
 				capabilities = capabilities,
+				on_attach = on_attach,
 			})
 
 			lspconfig.marksman.setup({
 				capabilities = capabilities,
+				on_attach = on_attach,
 			})
 
 			lspconfig.emmet_language_server.setup({
 				capabilities = capabilities,
+				on_attach = on_attach,
 			})
 
 			lspconfig.svelte.setup({
 				capabilities = capabilities,
+				on_attach = on_attach,
 			})
 
 			lspconfig.cssls.setup({
 				capabilities = capabilities,
+				on_attach = on_attach,
 			})
 
 			lspconfig.clangd.setup({
 				capabilities = capabilities,
+				on_attach = on_attach,
 			})
 
 			lspconfig.sqlls.setup({
 				cmd = { "sql-language-server", "up", "--method", "stdio" },
 				capabilities = capabilities,
+				on_attach = on_attach,
 			})
 
 			lspconfig.gopls.setup({
 				capabilities = capabilities,
+				on_attach = on_attach,
 			})
 
 			lspconfig.tsserver.setup({
 				capabilities = capabilities,
-				on_attach = function(client)
+				on_attach = function(client, bufnr)
 					client.server_capabilities.documentFormattingProvider = false
+					vim.lsp.inlay_hint.enable(bufnr, true)
 				end,
 			})
 			lspconfig.lua_ls.setup({
@@ -86,17 +105,24 @@ return {
 
 			lspconfig.rust_analyzer.setup({
 				capabilities = capabilities,
+				on_attach = function(client, bufnr)
+					vim.lsp.inlay_hint.enable(bufnr, true)
+				end,
 				settings = {
 					["rust-analyzer"] = {
-						-- Other Settings ...
-						procMacro = {
-							ignored = {
-								leptos_macro = {
-									-- optional: --
-									-- "component",
-									"server",
-								},
+						imports = {
+							granularity = {
+								group = "module",
 							},
+							prefix = "self",
+						},
+						cargo = {
+							buildScripts = {
+								enable = true,
+							},
+						},
+						procMacro = {
+							enable = true,
 						},
 					},
 				},
@@ -116,6 +142,10 @@ return {
 			local config = {
 				-- disable virtual text
 				virtual_text = true,
+
+				inlay_hints = {
+					enabled = true,
+				},
 				-- show signs
 				signs = {
 					active = signs,
