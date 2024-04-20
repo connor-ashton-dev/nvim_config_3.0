@@ -83,11 +83,11 @@ return {
 			window = {
 				completion = {
 					border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-					winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
+					-- winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
 				},
 				documentation = {
 					border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-					winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
+					-- winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
 				},
 			},
 		})
