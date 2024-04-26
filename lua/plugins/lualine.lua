@@ -9,7 +9,7 @@ return {
 		lualine.setup({
 			options = {
 				-- theme = "dracula-nvim",
-				theme = "auto",
+				theme = "tokyonight",
 				disabled_filetypes = { statusline = { "neo-tree", "dashboard", "alpha", "starter" } },
 			},
 			sections = {

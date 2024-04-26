@@ -147,9 +147,10 @@ return {
 					enabled = true,
 				},
 				-- show signs
-				signs = {
-					active = signs,
-				},
+				-- signs = {
+				-- 	active = signs,
+				-- },
+				signs = true,
 				update_in_insert = true,
 				underline = true,
 				severity_sort = true,
