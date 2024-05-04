@@ -68,3 +68,6 @@ vim.opt.updatetime = 750
 
 vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
 vim.opt.shortmess = vim.opt.shortmess + { c = true }
+
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true

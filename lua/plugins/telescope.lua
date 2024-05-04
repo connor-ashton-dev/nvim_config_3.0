@@ -15,7 +15,7 @@ return {
 				defaults = {
 					-- prompt_prefix = " ",
 					-- selection_caret = ">",
-					path_display = { "smart" },
+					path_display = { "absolute" },
 				},
 
 				pickers = {
@@ -30,7 +30,7 @@ return {
 							"-g",
 							"!target/*",
 						},
-						-- theme = "ivy",
+						theme = "dropdown",
 						previewer = false,
 						-- no_ignore = true,
 						hidden = true,
@@ -49,8 +49,8 @@ return {
 					},
 
 					treesitter = {
-						theme = "ivy",
-						-- previewer = true,
+						-- theme = "ivy",
+						previewer = true,
 						prompt_title = "Variables",
 					},
 					extensions = {

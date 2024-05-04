@@ -19,6 +19,10 @@ return {
 				end
 			end
 
+			-- lspconfig.typos_lsp.setup({
+			-- 	capabilities = capabilities,
+			-- 	on_attach = on_attach,
+			-- })
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
@@ -105,9 +109,9 @@ return {
 
 			lspconfig.rust_analyzer.setup({
 				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					vim.lsp.inlay_hint.enable(bufnr, true)
-				end,
+				-- on_attach = function(client, bufnr)
+				-- 	vim.lsp.inlay_hint.enable(bufnr, true)
+				-- end,
 				settings = {
 					["rust-analyzer"] = {
 						imports = {

@@ -47,6 +47,7 @@ keymap("n", "<leader>e", ":Neotree toggle right reveal <CR>", opts)
 
 -- telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+keymap("n", "<leader><Space>", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fs", ":Telescope spell_suggest<CR>", opts)
 keymap("n", "<leader>fv", ":Telescope treesitter<CR>", opts)
