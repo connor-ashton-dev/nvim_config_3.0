@@ -1,8 +1,8 @@
-vim.cmd([[colorscheme tokyonight]])
+vim.cmd([[colorscheme rose-pine]])
 vim.cmd([[Copilot disable]])
 
 vim.opt.guicursor = ""
-vim.opt.shell = "/bin/sh"
+vim.opt.shell = "/opt/homebrew/bin/fish"
 
 -- make cursor not blink
 -- vim.opt.guicursor = "a:Cursor/Cursor"
@@ -69,5 +69,5 @@ vim.opt.updatetime = 750
 vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
 vim.opt.shortmess = vim.opt.shortmess + { c = true }
 
-vim.opt.spelllang = "en_us"
-vim.opt.spell = true
+-- vim.opt.spelllang = "en_us"
+-- vim.opt.spell = true

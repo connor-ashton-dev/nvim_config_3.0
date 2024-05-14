@@ -1,6 +1,6 @@
 return {
 	"nvimdev/dashboard-nvim",
-	-- event = "VimEnter",
+	event = "VimEnter",
 	config = function()
 		require("dashboard").setup({
 			theme = "hyper",
@@ -17,7 +17,7 @@ return {
 						key = "f",
 					},
 					{
-						action = "Neotree toggle right reveal",
+						action = "lua require('neo-tree.command').execute({ toggle = true, position = 'right', reveal = true })",
 						group = "Label",
 						desc = " Explorer",
 						icon = " ",

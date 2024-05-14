@@ -1,8 +1,8 @@
 return {
 	{
 		"zbirenbaum/copilot.lua",
+		event = { "BufReadPre", "BufNewFile" },
 		cmd = "Copilot",
-		event = "InsertEnter",
 		config = function()
 			require("copilot").setup({
 				panel = {

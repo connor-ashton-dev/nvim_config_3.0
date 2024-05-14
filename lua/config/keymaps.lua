@@ -46,11 +46,16 @@ keymap("n", "<leader>nt", ":Neotree toggle float reveal <CR>", opts)
 keymap("n", "<leader>e", ":Neotree toggle right reveal <CR>", opts)
 
 -- telescope
-keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+keymap(
+	"n",
+	"<leader>ff",
+	":Telescope find_files find_command=rg,--no-ignore,--hidden,--files prompt_title=🔍<CR>",
+	opts
+)
 keymap("n", "<leader><Space>", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fs", ":Telescope spell_suggest<CR>", opts)
-keymap("n", "<leader>fv", ":Telescope treesitter<CR>", opts)
+keymap("n", "<leader>vv", ":Telescope treesitter<CR>", opts)
 keymap("n", "<leader>fr", ":Telescope lsp_references<CR>", opts)
 keymap("n", "<leader>vk", ":Telescope keymaps<CR>", opts)
 
@@ -59,6 +64,12 @@ keymap("n", "<leader>gs", ":Copilot status<CR>", opts)
 keymap("n", "<leader>ge", ":Copilot enable<CR>", opts)
 keymap("n", "<leader>gd", ":Copilot disable<CR>", opts)
 keymap("n", "<leader>gp", ":Copilot panel<CR>", opts)
+
+-- quickfix
+keymap("n", "]q", ":cnext<CR>", opts)
+keymap("n", "[q", ":cprev<CR>", opts)
+keymap("n", "]c", ":cclose<CR>", opts)
+keymap("n", "]o", ":copen<CR>", opts)
 
 -- yabs
 keymap("n", "<leader>r", ":YabsDefaultTask<CR>", opts)
@@ -71,6 +82,10 @@ keymap(
 
 -- editor stuff
 keymap("n", "<leader>vr", ":set relativenumber!<CR>", opts)
+
+keymap("n", "<leader>ai", ":ChatGPT<CR>", opts)
+
+keymap("v", "<leader>ai", ":ChatGPTRun<SPACE>", opts)
 
 -- lsp stuff
 local function toggle_virtual_text()

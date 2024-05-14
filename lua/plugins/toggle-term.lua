@@ -1,7 +1,7 @@
 return {
 	"akinsho/toggleterm.nvim",
 	version = "*",
-	-- event = { "BufReadPost", "BufNewFile" },
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local status_ok, toggleterm = pcall(require, "toggleterm")
 		if not status_ok then

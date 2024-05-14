@@ -37,7 +37,7 @@ return {
 						previewer = false,
 						-- no_ignore = true,
 						hidden = true,
-						prompt_title = "All Files",
+						prompt_title = "Find Files",
 					},
 
 					git_files = {

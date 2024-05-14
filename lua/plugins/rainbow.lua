@@ -1,7 +1,4 @@
 return {
-	"j-hui/fidget.nvim",
+	"HiPhish/rainbow-delimiters.nvim",
 	event = { "BufReadPre", "BufNewFile" },
-	opts = {
-		-- options
-	},
 }
