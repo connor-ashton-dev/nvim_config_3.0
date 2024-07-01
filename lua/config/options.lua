@@ -1,5 +1,4 @@
-vim.cmd([[colorscheme rose-pine]])
-vim.cmd([[Copilot disable]])
+vim.cmd([[colorscheme tokyonight-night]])
 
 vim.opt.guicursor = ""
 vim.opt.shell = "/opt/homebrew/bin/fish"

@@ -82,10 +82,9 @@ keymap(
 
 -- editor stuff
 keymap("n", "<leader>vr", ":set relativenumber!<CR>", opts)
-
 keymap("n", "<leader>ai", ":ChatGPT<CR>", opts)
-
 keymap("v", "<leader>ai", ":ChatGPTRun<SPACE>", opts)
+keymap("n", "<leader>zm", ":ZenMode<CR>", opts)
 
 -- lsp stuff
 local function toggle_virtual_text()
