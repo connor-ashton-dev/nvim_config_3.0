@@ -25,6 +25,8 @@ keymap("n", "<ESC>", ":nohl<CR>", opts)
 --FILE STUFF
 --save and format
 keymap("n", "<leader>w", ":w<CR>", opts)
+-- mega save
+keymap("n", "<leader>W", ":wa!<CR>", opts)
 --mega quit
 keymap("n", "<leader>K", ":xa!<CR>", opts)
 --kinda quit

@@ -23,6 +23,12 @@ return {
 			-- 	capabilities = capabilities,
 			-- 	on_attach = on_attach,
 			-- })
+
+			lspconfig.denols.setup({
+				on_attach = on_attach,
+				root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+			})
+
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
@@ -91,6 +97,8 @@ return {
 					client.server_capabilities.documentFormattingProvider = false
 					vim.lsp.inlay_hint.enable(bufnr, true)
 				end,
+				root_dir = lspconfig.util.root_pattern("package.json"),
+				single_file_support = false,
 			})
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
@@ -107,30 +115,30 @@ return {
 			lspconfig.pyright.setup({ capabilities = capabilities })
 			lspconfig.jsonls.setup({ capabilities = capabilities })
 
-			lspconfig.rust_analyzer.setup({
-				capabilities = capabilities,
-				-- on_attach = function(client, bufnr)
-				-- 	vim.lsp.inlay_hint.enable(bufnr, true)
-				-- end,
-				settings = {
-					["rust-analyzer"] = {
-						imports = {
-							granularity = {
-								group = "module",
-							},
-							prefix = "self",
-						},
-						cargo = {
-							buildScripts = {
-								enable = true,
-							},
-						},
-						procMacro = {
-							enable = true,
-						},
-					},
-				},
-			})
+			-- lspconfig.rust_analyzer.setup({
+			-- 	capabilities = capabilities,
+			-- 	-- on_attach = function(client, bufnr)
+			-- 	-- 	vim.lsp.inlay_hint.enable(bufnr, true)
+			-- 	-- end,
+			-- 	settings = {
+			-- 		["rust-analyzer"] = {
+			-- 			imports = {
+			-- 				granularity = {
+			-- 					group = "module",
+			-- 				},
+			-- 				prefix = "self",
+			-- 			},
+			-- 			cargo = {
+			-- 				buildScripts = {
+			-- 					enable = true,
+			-- 				},
+			-- 			},
+			-- 			procMacro = {
+			-- 				enable = true,
+			-- 			},
+			-- 		},
+			-- 	},
+			-- })
 
 			local signs = {
 				{ name = "DiagnosticSignError", text = "" },
