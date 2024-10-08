@@ -14,9 +14,9 @@ return {
 			-- local util = require("lspconfig/util")
 
 			local function on_attach(client, bufnr)
-				if vim.lsp.inlay_hint then
-					vim.lsp.inlay_hint.enable(0, true)
-				end
+				-- if vim.lsp.inlay_hint then
+				-- 	vim.lsp.inlay_hint.enable()
+				-- end
 			end
 
 			-- lspconfig.typos_lsp.setup({
@@ -81,7 +81,6 @@ return {
 			})
 
 			lspconfig.sqlls.setup({
-				cmd = { "sql-language-server", "up", "--method", "stdio" },
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
@@ -91,11 +90,18 @@ return {
 				on_attach = on_attach,
 			})
 
-			lspconfig.tsserver.setup({
+			lspconfig.templ.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
+			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 				on_attach = function(client, bufnr)
 					client.server_capabilities.documentFormattingProvider = false
-					vim.lsp.inlay_hint.enable(bufnr, true)
+					-- if vim.lsp.inlay_hint then
+					-- 	vim.lsp.inlay_hint.enable()
+					-- end
 				end,
 				root_dir = lspconfig.util.root_pattern("package.json"),
 				single_file_support = false,
@@ -115,30 +121,28 @@ return {
 			lspconfig.pyright.setup({ capabilities = capabilities })
 			lspconfig.jsonls.setup({ capabilities = capabilities })
 
-			-- lspconfig.rust_analyzer.setup({
-			-- 	capabilities = capabilities,
-			-- 	-- on_attach = function(client, bufnr)
-			-- 	-- 	vim.lsp.inlay_hint.enable(bufnr, true)
-			-- 	-- end,
-			-- 	settings = {
-			-- 		["rust-analyzer"] = {
-			-- 			imports = {
-			-- 				granularity = {
-			-- 					group = "module",
-			-- 				},
-			-- 				prefix = "self",
-			-- 			},
-			-- 			cargo = {
-			-- 				buildScripts = {
-			-- 					enable = true,
-			-- 				},
-			-- 			},
-			-- 			procMacro = {
-			-- 				enable = true,
-			-- 			},
-			-- 		},
-			-- 	},
-			-- })
+			lspconfig.rust_analyzer.setup({
+				capabilities = capabilities,
+				-- on_attach = on_attach,
+				settings = {
+					["rust-analyzer"] = {
+						imports = {
+							granularity = {
+								group = "module",
+							},
+							prefix = "self",
+						},
+						cargo = {
+							buildScripts = {
+								enable = true,
+							},
+						},
+						procMacro = {
+							enable = true,
+						},
+					},
+				},
+			})
 
 			local signs = {
 				{ name = "DiagnosticSignError", text = "" },
@@ -155,9 +159,9 @@ return {
 				-- disable virtual text
 				virtual_text = true,
 
-				inlay_hints = {
-					enabled = true,
-				},
+				-- inlay_hints = {
+				-- 	enabled = true,
+				-- },
 				-- show signs
 				-- signs = {
 				-- 	active = signs,

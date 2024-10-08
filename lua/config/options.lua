@@ -15,6 +15,12 @@ vim.opt.clipboard = "unnamed"
 
 vim.opt.ignorecase = false
 
+-- StatusLine don't need it
+-- vim.opt.laststatus = 0
+-- vim.api.nvim_set_hl(0, "Statusline", { link = "Normal" })
+-- vim.api.nvim_set_hl(0, "StatuslineNC", { link = "Normal" })
+vim.opt.ruler = false
+
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2

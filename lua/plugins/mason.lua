@@ -29,7 +29,7 @@ return {
 			-- list of servers for mason to install
 			ensure_installed = {
 				"pyright",
-				"tsserver",
+				"ts_ls",
 				"lua_ls",
 				"jsonls",
 				"java_language_server",

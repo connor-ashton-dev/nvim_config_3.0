@@ -100,7 +100,7 @@ keymap("n", "<leader>lt", function()
 end, { noremap = true })
 
 keymap("n", "<leader>lr", ":LspRestart<CR>:echo 'LSP Restarted.'<CR>", opts)
-keymap("n", "<leader>t", ":TroubleToggle<CR>", opts)
+keymap("n", "<leader>t", ":Trouble diagnostics toggle focus=true<CR>", opts)
 local lint_progress = function()
 	local linters = require("lint").get_running()
 	if #linters == 0 then

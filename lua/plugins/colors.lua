@@ -84,6 +84,9 @@ return {
 				light_style = "day", -- The theme is used when the background is set to light
 				transparent = false, -- Enable this to disable setting the background color
 				terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
+				on_colors = function(colors)
+					colors.bg_statusline = colors.none -- or "NONE"
+				end,
 				styles = {
 					-- Style to be applied to different syntax groups
 					-- Value is any valid attr-list value for `:help nvim_set_hl`

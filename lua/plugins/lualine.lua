@@ -14,16 +14,20 @@ return {
 				disabled_filetypes = { statusline = { "neo-tree", "dashboard", "alpha", "starter" } },
 			},
 			sections = {
-				lualine_x = {
-					{
-						lazy_status.updates,
-						cond = lazy_status.has_updates,
-						color = { fg = "#ff9e64" },
-					},
-					{ "encoding" },
-					{ "fileformat" },
-					{ "filetype" },
-				},
+				lualine_a = { "mode" },
+				lualine_b = {},
+				lualine_c = {},
+				lualine_x = {},
+				lualine_y = { "diagnostics" },
+				lualine_z = {},
+			},
+			inactive_sections = {
+				lualine_a = {},
+				lualine_b = {},
+				lualine_c = { "filename" },
+				lualine_x = { "location" },
+				lualine_y = {},
+				lualine_z = {},
 			},
 		})
 	end,
