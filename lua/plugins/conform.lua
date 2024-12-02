@@ -8,7 +8,7 @@ return {
 			-- languages here or re-enable it for the disabled ones.
 			local disable_filetypes = { c = true, cpp = true }
 			return {
-				timeout_ms = 500,
+				timeout_ms = 3000,
 				lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
 			}
 		end,
@@ -17,7 +17,6 @@ return {
 			html = { "djlint" },
 			go = { "gofmt", "goimports" },
 			c = { "clang_format" },
-
 			lua = { "stylua" },
 			javascript = { "prettierd" },
 			typescript = { "prettierd" },
@@ -26,6 +25,8 @@ return {
 			python = { "black" },
 			rust = { "rustfmt" },
 			cpp = { "clang_format" },
+			toml = { "taplo" },
+			docker = { "dockerls" },
 			-- Conform can also run multiple formatters sequentially
 			-- python = { "isort", "black" },
 			--

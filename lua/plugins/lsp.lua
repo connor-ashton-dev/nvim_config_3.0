@@ -29,6 +29,11 @@ return {
 				root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
 			})
 
+			lspconfig.taplo.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
@@ -46,6 +51,11 @@ return {
 			})
 
 			lspconfig.htmx.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
+			lspconfig.zls.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
