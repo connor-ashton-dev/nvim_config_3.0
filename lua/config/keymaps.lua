@@ -44,8 +44,8 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 --explorer
-keymap("n", "<leader>e", ":Neotree toggle right reveal <CR>", opts)
-keymap("n", "<leader>o", ":Oil<CR>", opts)
+-- keymap("n", "<leader>e", ":Neotree toggle right reveal <CR>", opts)
+keymap("n", "<leader>e", ":Oil<CR>", opts)
 
 -- telescope
 keymap(

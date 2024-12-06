@@ -18,6 +18,7 @@ return {
 			go = { "gofmt", "goimports" },
 			c = { "clang_format" },
 			lua = { "stylua" },
+			astro = { "prettier" },
 			javascript = { "prettierd" },
 			typescript = { "prettierd" },
 			javascriptreact = { "prettierd" },
