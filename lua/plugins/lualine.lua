@@ -16,7 +16,7 @@ return {
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = {},
-				lualine_c = {},
+				lualine_c = { "copilot" },
 				lualine_x = {},
 				lualine_y = { "diagnostics" },
 				lualine_z = { "filename" },

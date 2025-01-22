@@ -38,7 +38,7 @@ return {
 				"svelte",
 				"cssls",
 				"typos_lsp",
-				"sqlls",
+				"sqls",
 				"denols",
 				"dockerls",
 				"prismals",

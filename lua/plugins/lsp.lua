@@ -95,10 +95,10 @@ return {
 				on_attach = on_attach,
 			})
 
-			lspconfig.sqlls.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
+			-- lspconfig.sqls.setup({
+			-- 	capabilities = capabilities,
+			-- 	on_attach = on_attach,
+			-- })
 
 			lspconfig.gopls.setup({
 				capabilities = capabilities,
@@ -141,18 +141,13 @@ return {
 				-- on_attach = on_attach,
 				settings = {
 					["rust-analyzer"] = {
-						imports = {
-							granularity = {
-								group = "module",
-							},
-							prefix = "self",
-						},
-						cargo = {
-							buildScripts = {
-								enable = true,
-							},
-						},
 						procMacro = {
+							enable = true,
+						},
+						-- check = {
+						-- 	command = "clippy",
+						-- },
+						diagnostics = {
 							enable = true,
 						},
 					},
