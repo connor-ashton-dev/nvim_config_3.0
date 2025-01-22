@@ -9,7 +9,6 @@ return {
 		claude = {
 			endpoint = "https://api.anthropic.com",
 			model = "claude-3-5-sonnet-20241022",
-			-- key = "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",
 		},
 	},
 	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
