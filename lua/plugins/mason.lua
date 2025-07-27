@@ -28,6 +28,7 @@ return {
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
 			ensure_installed = {
+				"ruff",
 				"pyright",
 				"ts_ls",
 				"lua_ls",
@@ -54,10 +55,8 @@ return {
 			ensure_installed = {
 				"prettier",
 				"stylua",
-				"black",
 				"eslint_d",
-				-- "gofmt",
-				"flake8",
+				"ruff",
 			},
 		})
 	end,
