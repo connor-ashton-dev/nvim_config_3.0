@@ -11,7 +11,13 @@ return {
 		config = function()
 			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			-- local util = require("lspconfig/util")
+
+			local border = "rounded"
+
+			local handlers = {
+				["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+				["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+			}
 
 			local function on_attach(client, bufnr)
 				-- if vim.lsp.inlay_hint then
@@ -19,138 +25,73 @@ return {
 				-- end
 			end
 
-			-- lspconfig.typos_lsp.setup({
-			-- 	capabilities = capabilities,
-			-- 	on_attach = on_attach,
-			-- })
+			local servers = {
+				"taplo",
+				"ruff",
+				"pyright",
+				"prismals",
+				"zls",
+				"dockerls",
+				"astro",
+				"marksman",
+				"emmet_language_server",
+				"svelte",
+				"cssls",
+				"clangd",
+				"gopls",
+				"templ",
+				"tailwindcss",
+				"jsonls",
+			}
 
-			-- lspconfig.denols.setup({
-			-- 	on_attach = on_attach,
-			-- 	root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-			-- })
+			for _, lsp in ipairs(servers) do
+				lspconfig[lsp].setup({
+					handlers = handlers,
+					capabilities = capabilities,
+					on_attach = on_attach,
+				})
+			end
 
-			lspconfig.taplo.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-
-			lspconfig.ruff.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-
-			lspconfig.pyright.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-
-			lspconfig.prismals.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-
+			-- Special configurations
 			lspconfig.sourcekit.setup({
 				cmd = { "/Library/Developer/CommandLineTools/usr/bin/sourcekit-lsp" },
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-
-			-- lspconfig.htmx.setup({
-			-- 	capabilities = capabilities,
-			-- 	on_attach = on_attach,
-			-- })
-
-			lspconfig.zls.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-
-			lspconfig.dockerls.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-
-			lspconfig.astro.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-
-			lspconfig.marksman.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-
-			lspconfig.emmet_language_server.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-
-			lspconfig.svelte.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-
-			lspconfig.cssls.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-
-			lspconfig.clangd.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-
-			lspconfig.gopls.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-
-			lspconfig.templ.setup({
+				handlers = handlers,
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
 
 			lspconfig.ts_ls.setup({
+				handlers = handlers,
 				capabilities = capabilities,
 				on_attach = function(client, bufnr)
 					client.server_capabilities.documentFormattingProvider = false
-					-- if vim.lsp.inlay_hint then
-					-- 	vim.lsp.inlay_hint.enable()
-					-- end
 				end,
 				root_dir = lspconfig.util.root_pattern("package.json"),
 				single_file_support = false,
 			})
+
 			lspconfig.lua_ls.setup({
+				handlers = handlers,
 				capabilities = capabilities,
+				on_attach = on_attach,
 				settings = {
 					Lua = {
 						diagnostics = {
-							-- Get the language server to recognize the `vim` global
 							globals = { "vim" },
 						},
 					},
 				},
 			})
-			lspconfig.tailwindcss.setup({ capabilities = capabilities })
-			lspconfig.jsonls.setup({ capabilities = capabilities })
-
-			-- lspconfig.java_language_server.setup({
-			-- 	capabilities = capabilities,
-			-- 	on_attach = on_attach,
-			-- })
 
 			lspconfig.rust_analyzer.setup({
+				handlers = handlers,
 				capabilities = capabilities,
-				-- on_attach = on_attach,
+				on_attach = on_attach,
 				settings = {
 					["rust-analyzer"] = {
 						procMacro = {
 							enable = true,
 						},
-						-- check = {
-						-- 	command = "clippy",
-						-- },
 						diagnostics = {
 							enable = true,
 						},
@@ -191,25 +132,14 @@ return {
 				update_in_insert = true,
 				underline = true,
 				severity_sort = true,
-				float = {
-					focusable = true,
-					style = "minimal",
-					border = "rounded",
-					source = "always",
-					header = "",
-					prefix = "",
-				},
 			}
 
 			vim.diagnostic.config(config)
 
-			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-				border = "rounded",
-			})
-
-			vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-				border = "rounded",
-			})
+			-- Set global handlers
+			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+			vim.lsp.handlers["textDocument/signatureHelp"] =
+				vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
 
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
@@ -222,7 +152,11 @@ return {
 					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 					vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 					vim.keymap.set("n", "ca", vim.lsp.buf.code_action, opts)
-					vim.keymap.set("n", "H", vim.lsp.buf.hover, opts)
+					vim.keymap.set("n", "H", function()
+						vim.lsp.buf.hover({
+							border = "rounded",
+						})
+					end, opts)
 					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 					vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
 					vim.keymap.set("n", "gn", vim.diagnostic.goto_next, opts)

@@ -84,14 +84,12 @@ return {
 				}),
 			},
 			window = {
-				completion = {
-					border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-					-- winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
-				},
-				documentation = {
-					border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-					-- winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
-				},
+				completion = cmp.config.window.bordered({
+					winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+				}),
+				documentation = cmp.config.window.bordered({
+					winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+				}),
 			},
 		})
 	end,
