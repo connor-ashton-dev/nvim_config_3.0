@@ -135,6 +135,11 @@ return {
 			lspconfig.tailwindcss.setup({ capabilities = capabilities })
 			lspconfig.jsonls.setup({ capabilities = capabilities })
 
+			lspconfig.java_language_server.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
 			lspconfig.rust_analyzer.setup({
 				capabilities = capabilities,
 				-- on_attach = on_attach,
