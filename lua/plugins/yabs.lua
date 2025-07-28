@@ -62,34 +62,6 @@ return {
 						},
 					},
 				},
-				java = {
-					default_task = "build_and_run",
-					tasks = {
-						compile = {
-							command = "javac %",
-							output = "quickfix",
-							opts = {
-								open_on_run = "auto",
-							},
-						},
-						run = {
-							command = "java %",
-							output = "terminal",
-						},
-						build_and_run = {
-							command = function()
-								require("yabs"):run_task("compile", {
-									on_exit = function(_, exit_code)
-										if exit_code == 0 then
-											require("yabs").languages.java:run_task("run")
-										end
-									end,
-								})
-							end,
-							type = "lua",
-						},
-					},
-				},
 				c = {
 					default_task = "build_and_run",
 					tasks = {

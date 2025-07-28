@@ -34,7 +34,7 @@ return {
 				"ts_ls",
 				"lua_ls",
 				"jsonls",
-				"java_language_server",
+				-- "java_language_server",
 				"gopls",
 				"tailwindcss",
 				"svelte",
@@ -45,7 +45,7 @@ return {
 				"dockerls",
 				"prismals",
 				"clangd",
-				"htmx",
+				-- "htmx",
 				"marksman",
 			},
 			-- auto-install configured servers (with lspconfig)

@@ -23,6 +23,9 @@ return {
 		require("luasnip.loaders.from_vscode").lazy_load()
 
 		cmp.setup({
+			performance = {
+				max_view_entries = 15,
+			},
 			completion = {
 				completeopt = "menu,menuone,preview,noselect",
 			},

@@ -55,10 +55,10 @@ return {
 				on_attach = on_attach,
 			})
 
-			lspconfig.htmx.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
+			-- lspconfig.htmx.setup({
+			-- 	capabilities = capabilities,
+			-- 	on_attach = on_attach,
+			-- })
 
 			lspconfig.zls.setup({
 				capabilities = capabilities,
@@ -135,10 +135,10 @@ return {
 			lspconfig.tailwindcss.setup({ capabilities = capabilities })
 			lspconfig.jsonls.setup({ capabilities = capabilities })
 
-			lspconfig.java_language_server.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
+			-- lspconfig.java_language_server.setup({
+			-- 	capabilities = capabilities,
+			-- 	on_attach = on_attach,
+			-- })
 
 			lspconfig.rust_analyzer.setup({
 				capabilities = capabilities,
