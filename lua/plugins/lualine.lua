@@ -11,7 +11,7 @@ return {
 			options = {
 				-- theme = "dracula-nvim",
 				theme = "auto",
-				disabled_filetypes = { statusline = { "neo-tree", "dashboard", "alpha", "starter" } },
+				disabled_filetypes = { statusline = { "neo-tree", "dashboard", "alpha", "starter", "fugitive" } },
 			},
 			sections = {
 				lualine_a = { "mode" },
