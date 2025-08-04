@@ -16,6 +16,7 @@ return {
 			sh = { "shfmt" },
 			html = { "djlint" },
 			go = { "gofmt", "goimports" },
+			sql = { "sql_formatter" },
 			c = { "clang_format" },
 			lua = { "stylua" },
 			astro = { "prettier" },

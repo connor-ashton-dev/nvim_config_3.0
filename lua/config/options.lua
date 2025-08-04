@@ -1,4 +1,4 @@
-vim.cmd([[colorscheme rose-pine]])
+vim.cmd([[colorscheme carbonfox]])
 
 vim.opt.guicursor = ""
 vim.opt.shell = "/opt/homebrew/bin/fish"

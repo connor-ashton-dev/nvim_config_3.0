@@ -15,16 +15,24 @@ return {
 	-- }
 
 	-- INFO: ROSE PINE
+	-- {
+	-- 	"rose-pine/neovim",
+	-- 	name = "rose-pine",
+	-- 	opts = {
+	-- 		styles = {
+	-- 			bold = true,
+	-- 			italic = false,
+	-- 			transparency = false,
+	-- 		},
+	-- 	},
+	-- },
+
+	-- NightFox
 	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		opts = {
-			styles = {
-				bold = true,
-				italic = false,
-				transparency = false,
-			},
-		},
+		"EdenEast/nightfox.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
 	},
 
 	--INFO: GRUVBOX MATERIAL

@@ -62,10 +62,10 @@ keymap("n", "<leader>fr", ":Telescope lsp_references<CR>", opts)
 keymap("n", "<leader>vk", ":Telescope keymaps<CR>", opts)
 
 -- copilot
-keymap("n", "<leader>gs", ":Copilot status<CR>", opts)
-keymap("n", "<leader>ge", ":Copilot enable<CR>", opts)
-keymap("n", "<leader>gd", ":Copilot disable<CR>", opts)
-keymap("n", "<leader>gp", ":Copilot panel<CR>", opts)
+keymap("n", "<leader>gcs", ":Copilot status<CR>", opts)
+keymap("n", "<leader>gce", ":Copilot enable<CR>", opts)
+keymap("n", "<leader>gcd", ":Copilot disable<CR>", opts)
+keymap("n", "<leader>gcp", ":Copilot panel<CR>", opts)
 
 -- quickfix
 keymap("n", "]q", ":cnext<CR>", opts)
@@ -115,4 +115,6 @@ end, opts)
 
 -- lazygit
 
-keymap("n", "<leader>gg", ":tab Git<CR>", opts)
+-- keymap("n", "<leader>gg", ":tab Git<CR>", opts)
+keymap("n", "<leader>gg", ":Neogit<CR>", opts)
+keymap("n", "<leader>gd", ":DiffviewOpen<CR>", opts)

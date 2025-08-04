@@ -39,7 +39,7 @@ return {
 				"tailwindcss",
 				"svelte",
 				"cssls",
-				"typos_lsp",
+				-- "typos_lsp",
 				"sqls",
 				-- "denols",
 				"dockerls",
