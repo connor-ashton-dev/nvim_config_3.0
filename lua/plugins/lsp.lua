@@ -5,12 +5,12 @@ return {
 		-- cmd = { "LspInfo", "LspInstall", "LspUninstall" },
 		dependencies = {
 			{ "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
-			"hrsh7th/cmp-nvim-lsp",
+			"saghen/blink.cmp",
 			{ "folke/neodev.nvim", opts = {} },
 		},
 		config = function()
 			local lspconfig = require("lspconfig")
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 			local border = "rounded"
 
