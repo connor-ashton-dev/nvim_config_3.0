@@ -27,7 +27,7 @@ return {
 
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
-			automatic_enable = true, -- automatically enable servers that are installed
+			automatic_enable = false, -- automatically enable servers that are installed
 			ensure_installed = {
 				"ruff",
 				"pyright",
