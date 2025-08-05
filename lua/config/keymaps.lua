@@ -60,6 +60,7 @@ keymap("n", "<leader>fs", ":Telescope spell_suggest<CR>", opts)
 keymap("n", "<leader>vv", ":Telescope treesitter<CR>", opts)
 keymap("n", "<leader>fr", ":Telescope lsp_references<CR>", opts)
 keymap("n", "<leader>vk", ":Telescope keymaps<CR>", opts)
+keymap("n", "<leader>rt", ":GrugFar<CR>", opts)
 
 -- copilot
 keymap("n", "<leader>gcs", ":Copilot status<CR>", opts)
