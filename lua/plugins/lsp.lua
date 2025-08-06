@@ -60,15 +60,16 @@ return {
 				on_attach = on_attach,
 			})
 
-			lspconfig.ts_ls.setup({
-				handlers = handlers,
-				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					client.server_capabilities.documentFormattingProvider = false
-				end,
-				root_dir = lspconfig.util.root_pattern("package.json"),
-				single_file_support = false,
-			})
+			-- Moved to typescript.lua
+			-- lspconfig.ts_ls.setup({
+			-- 	handlers = handlers,
+			-- 	capabilities = capabilities,
+			-- 	on_attach = function(client, bufnr)
+			-- 		client.server_capabilities.documentFormattingProvider = false
+			-- 	end,
+			-- 	root_dir = lspconfig.util.root_pattern("package.json"),
+			-- 	single_file_support = false,
+			-- })
 
 			lspconfig.lua_ls.setup({
 				handlers = handlers,
