@@ -60,15 +60,28 @@ return {
 				on_attach = on_attach,
 			})
 
-			-- Moved to typescript.lua
-			-- lspconfig.ts_ls.setup({
+			-- lspconfig.vtsls.setup({
 			-- 	handlers = handlers,
 			-- 	capabilities = capabilities,
 			-- 	on_attach = function(client, bufnr)
 			-- 		client.server_capabilities.documentFormattingProvider = false
 			-- 	end,
-			-- 	root_dir = lspconfig.util.root_pattern("package.json"),
+			-- 	root_dir = lspconfig.util.root_pattern(
+			-- 		"turbo.json", -- Turborepo
+			-- 		"pnpm-workspace.yaml", -- pnpm monorepo
+			-- 		"lerna.json", -- Lerna monorepo
+			-- 		"nx.json", -- Nx monorepo
+			-- 		"package.json", -- Regular project (fallback)
+			-- 		".git" -- Git repo (ultimate fallback)
+			-- 	),
 			-- 	single_file_support = false,
+			-- 	settings = {
+			-- 		typescript = {
+			-- 			tsserver = {
+			-- 				maxTsServerMemory = 32768,
+			-- 			},
+			-- 		},
+			-- 	},
 			-- })
 
 			lspconfig.lua_ls.setup({

@@ -45,6 +45,7 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 --explorer
 keymap("n", "<leader>e", ":Neotree toggle right reveal <CR>", opts)
+-- keymap("n", "<leader>e", ":lua Snacks.explorer()<CR>", opts)
 -- keymap("n", "<leader>e", ":Oil<CR>", opts)
 
 -- telescope
@@ -85,9 +86,8 @@ keymap(
 
 -- editor stuff
 keymap("n", "<leader>vr", ":set relativenumber!<CR>", opts)
-keymap("n", "<leader>ai", ":ChatGPT<CR>", opts)
-keymap("v", "<leader>ai", ":ChatGPTRun<SPACE>", opts)
 keymap("n", "<leader>zm", ":ZenMode<CR>", opts)
+keymap("n", "<leader>ct", ":tabc<CR>", opts)
 
 -- lsp stuff
 local function toggle_virtual_text()
@@ -117,5 +117,5 @@ end, opts)
 -- lazygit
 
 -- keymap("n", "<leader>gg", ":tab Git<CR>", opts)
-keymap("n", "<leader>gg", ":Neogit<CR>", opts)
+keymap("n", "<leader>gg", ":lua Snacks.lazygit()<CR>", opts)
 keymap("n", "<leader>gd", ":DiffviewOpen<CR>", opts)

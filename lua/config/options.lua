@@ -1,4 +1,4 @@
-vim.cmd([[colorscheme carbonfox]])
+vim.cmd([[colorscheme tokyonight]])
 
 vim.opt.guicursor = ""
 vim.opt.shell = "/opt/homebrew/bin/fish"
@@ -11,6 +11,7 @@ vim.g.editorconfig = true
 vim.opt.clipboard = "unnamed"
 
 vim.opt.ignorecase = false
+vim.g.lazygit_config = false
 
 vim.opt.ruler = false
 
@@ -61,6 +62,7 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
+vim.env.COLORTERM = "truecolor"
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
