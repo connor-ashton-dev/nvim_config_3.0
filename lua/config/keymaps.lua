@@ -49,25 +49,7 @@ keymap("n", "<leader>e", ":Neotree toggle right reveal <CR>", opts)
 -- keymap("n", "<leader>e", ":Oil<CR>", opts)
 
 -- telescope
-keymap(
-	"n",
-	"<leader>ff",
-	":Telescope find_files find_command=rg,--no-ignore,--hidden,--files prompt_title=🔍<CR>",
-	opts
-)
-keymap("n", "<leader><Space>", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>fs", ":Telescope spell_suggest<CR>", opts)
-keymap("n", "<leader>vv", ":Telescope treesitter<CR>", opts)
-keymap("n", "<leader>fr", ":Telescope lsp_references<CR>", opts)
-keymap("n", "<leader>vk", ":Telescope keymaps<CR>", opts)
 keymap("n", "<leader>rt", ":GrugFar<CR>", opts)
-
--- copilot
-keymap("n", "<leader>gcs", ":Copilot status<CR>", opts)
-keymap("n", "<leader>gce", ":Copilot enable<CR>", opts)
-keymap("n", "<leader>gcd", ":Copilot disable<CR>", opts)
-keymap("n", "<leader>gcp", ":Copilot panel<CR>", opts)
 
 -- quickfix
 keymap("n", "]q", ":cnext<CR>", opts)
@@ -101,7 +83,6 @@ keymap("n", "<leader>lt", function()
 end, { noremap = true })
 
 keymap("n", "<leader>lr", ":LspRestart<CR>:echo 'LSP Restarted.'<CR>", opts)
-keymap("n", "<leader>t", ":Trouble diagnostics toggle focus=true<CR>", opts)
 local lint_progress = function()
 	local linters = require("lint").get_running()
 	if #linters == 0 then
