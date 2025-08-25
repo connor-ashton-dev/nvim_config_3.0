@@ -7,12 +7,12 @@ return {
 	-- },
 
 	--INFO: DRACULA
-	-- return {
-	-- 	"Mofiqul/dracula.nvim",
-	-- 	opts = {
-	-- 		transparent_bg = false, -- default false
-	-- 	},
-	-- }
+	{
+		"Mofiqul/dracula.nvim",
+		opts = {
+			transparent_bg = false, -- default false
+		},
+	},
 
 	-- INFO: ROSE PINE
 	-- {

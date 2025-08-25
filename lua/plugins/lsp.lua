@@ -60,29 +60,65 @@ return {
 				on_attach = on_attach,
 			})
 
-			-- lspconfig.vtsls.setup({
-			-- 	handlers = handlers,
-			-- 	capabilities = capabilities,
-			-- 	on_attach = function(client, bufnr)
-			-- 		client.server_capabilities.documentFormattingProvider = false
-			-- 	end,
-			-- 	root_dir = lspconfig.util.root_pattern(
-			-- 		"turbo.json", -- Turborepo
-			-- 		"pnpm-workspace.yaml", -- pnpm monorepo
-			-- 		"lerna.json", -- Lerna monorepo
-			-- 		"nx.json", -- Nx monorepo
-			-- 		"package.json", -- Regular project (fallback)
-			-- 		".git" -- Git repo (ultimate fallback)
-			-- 	),
-			-- 	single_file_support = false,
-			-- 	settings = {
-			-- 		typescript = {
-			-- 			tsserver = {
-			-- 				maxTsServerMemory = 32768,
-			-- 			},
-			-- 		},
-			-- 	},
-			-- })
+			lspconfig.vtsls.setup({
+				handlers = handlers,
+				capabilities = capabilities,
+				on_attach = function(client, bufnr)
+					client.server_capabilities.documentFormattingProvider = false
+				end,
+				opts = {
+					-- make sure mason installs the server
+					servers = {
+						--- @deprecated -- tsserver renamed to ts_ls but not yet rel eased, so keep this for now
+						--- the proper approach is to check the nvim-lspconfig release version when it's released to determine the server name dynamically
+						tsserver = {
+							enabled = false,
+						},
+						ts_ls = {
+							enabled = false,
+						},
+						vtsls = {
+							-- explicitly add default filetypes, so that we can extend
+							-- them in related extras
+							filetypes = {
+								"javascript",
+								"javascriptreact",
+								"javascript.jsx",
+								"typescript",
+								"typescriptreact",
+								"typescript.tsx",
+							},
+							settings = {
+								complete_function_calls = true,
+								vtsls = {
+									enableMoveToFileCodeAction = true,
+									autoUseWorkspaceTsdk = true,
+									experimental = {
+										maxInlayHintLength = 30,
+										completion = {
+											enableServerSideFuzzyMatch = true,
+										},
+									},
+								},
+								typescript = {
+									updateImportsOnFileMove = { enabled = "always" },
+									suggest = {
+										completeFunctionCalls = true,
+									},
+									inlayHints = {
+										enumMemberValues = { enabled = true },
+										functionLikeReturnTypes = { enabled = true },
+										parameterNames = { enabled = "literals" },
+										parameterTypes = { enabled = true },
+										propertyDeclarationTypes = { enabled = true },
+										variableTypes = { enabled = false },
+									},
+								},
+							},
+						},
+					},
+				},
+			})
 
 			lspconfig.lua_ls.setup({
 				handlers = handlers,

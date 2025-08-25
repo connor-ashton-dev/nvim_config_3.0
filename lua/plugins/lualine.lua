@@ -12,7 +12,15 @@ return {
 				-- theme = "dracula-nvim",
 				theme = "auto",
 				disabled_filetypes = {
-					statusline = { "neo-tree", "dashboard", "alpha", "starter", "fugitive", "grug-far" },
+					statusline = {
+						"neo-tree",
+						"dashboard",
+						"alpha",
+						"starter",
+						"fugitive",
+						"grug-far",
+						"snacks_terminal",
+					},
 				},
 			},
 			sections = {
