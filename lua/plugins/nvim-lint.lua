@@ -15,6 +15,9 @@ return {
 			go = { "golangcilint" },
 		}
 
+		-- Configure golangcilint to ignore exit code 5 (issues found)
+		lint.linters.golangcilint.ignore_exitcode = true
+
 		lint.linters.eslint.args = {
 			"no-warn-ignored", -- <-- this is the key argument
 			"--format",

@@ -19,8 +19,15 @@ keymap("n", "<C-u>", "<C-u>zz", opts)
 -- keymap("n", "<C-e>", "10zl", opts)
 -- keymap("n", "<C-w>", "10zh", opts)
 
---remove highlight with ESC
-keymap("n", "<ESC>", ":nohl<CR>", opts)
+--remove highlight with ESC and exit snippets
+keymap("n", "<ESC>", function()
+	-- Clear search highlights
+	vim.cmd("nohl")
+	-- Exit snippet session if active
+	if vim.snippet then
+		vim.snippet.stop()
+	end
+end, opts)
 
 --FILE STUFF
 --save and format
@@ -97,6 +104,6 @@ end, opts)
 
 -- lazygit
 
--- keymap("n", "<leader>gg", ":tab Git<CR>", opts)
-keymap("n", "<leader>gg", ":lua Snacks.lazygit()<CR>", opts)
+keymap("n", "<leader>gg", ":tab Git<CR>", opts)
+keymap("n", "<leader>lg", ":lua Snacks.lazygit()<CR>", opts)
 keymap("n", "<leader>gd", ":DiffviewOpen<CR>", opts)

@@ -1,0 +1,39 @@
+{
+  "if err": {
+    "prefix": "iferr",
+    "body": [
+      "if err != nil {",
+      "\t${1:return err}",
+      "}"
+    ],
+    "description": "if err != nil"
+  },
+  "if err return": {
+    "prefix": "iferrr",
+    "body": [
+      "if err != nil {",
+      "\treturn ${1:err}",
+      "}"
+    ],
+    "description": "if err != nil with return"
+  },
+  "if err log fatal": {
+    "prefix": "iferrf",
+    "body": [
+      "if err != nil {",
+      "\tlog.Fatal(err)",
+      "}"
+    ],
+    "description": "if err != nil with log.Fatal"
+  },
+  "if err println": {
+    "prefix": "iferrp",
+    "body": [
+      "if err != nil {",
+      "\tfmt.Println(${1:\"Error:\"}, err)",
+      "\t${2:return}",
+      "}"
+    ],
+    "description": "if err != nil with fmt.Println"
+  }
+}
