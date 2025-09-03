@@ -104,6 +104,6 @@ end, opts)
 
 -- lazygit
 
-keymap("n", "<leader>gg", ":tab Git<CR>", opts)
-keymap("n", "<leader>lg", ":lua Snacks.lazygit()<CR>", opts)
-keymap("n", "<leader>gd", ":DiffviewOpen<CR>", opts)
+-- keymap("n", "<leader>gg", ":tab Git<CR>", opts)
+keymap("n", "<leader>gg", ":lua Snacks.lazygit()<CR>", opts)
+-- keymap("n", "<leader>gd", ":DiffviewOpen<CR>", opts)
