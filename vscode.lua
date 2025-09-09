@@ -21,6 +21,7 @@ keymap("n", "<ESC>", ":nohl<CR>", opts)
 keymap("n", "<leader>w", ":w<cr>")
 -- move hover to H
 keymap("n", "H", function() vscode.action('editor.action.showHover') end)
+-- another change
 
 keymap("n", "<leader><leader>", function()
     vscode.action('workbench.action.quickOpen')
