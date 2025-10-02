@@ -89,9 +89,9 @@ return {
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
 		},
-		
+
 		snippets = {
-			search_paths = { vim.fn.stdpath("config") .. "/snippets" }
+			search_paths = { vim.fn.stdpath("config") .. "/snippets" },
 		},
 
 		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance

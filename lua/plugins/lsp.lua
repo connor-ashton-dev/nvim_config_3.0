@@ -9,7 +9,6 @@ return {
 			{ "folke/neodev.nvim", opts = {} },
 		},
 		config = function()
-			local lspconfig = require("lspconfig")
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 			local border = "rounded"
@@ -45,7 +44,7 @@ return {
 			}
 
 			for _, lsp in ipairs(servers) do
-				lspconfig[lsp].setup({
+				vim.lsp.enable(lsp, {
 					handlers = handlers,
 					capabilities = capabilities,
 					on_attach = on_attach,
@@ -53,77 +52,61 @@ return {
 			end
 
 			-- Special configurations
-			lspconfig.sourcekit.setup({
+			vim.lsp.config.sourcekit = {
 				cmd = { "/Library/Developer/CommandLineTools/usr/bin/sourcekit-lsp" },
+			}
+			vim.lsp.enable("sourcekit", {
 				handlers = handlers,
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
 
-			lspconfig.vtsls.setup({
+			vim.lsp.config.vtsls = {
+				filetypes = {
+					"javascript",
+					"javascriptreact",
+					"javascript.jsx",
+					"typescript",
+					"typescriptreact",
+					"typescript.tsx",
+				},
+				settings = {
+					complete_function_calls = true,
+					vtsls = {
+						enableMoveToFileCodeAction = true,
+						autoUseWorkspaceTsdk = true,
+						experimental = {
+							maxInlayHintLength = 30,
+							completion = {
+								enableServerSideFuzzyMatch = true,
+							},
+						},
+					},
+					typescript = {
+						updateImportsOnFileMove = { enabled = "always" },
+						suggest = {
+							completeFunctionCalls = true,
+						},
+						inlayHints = {
+							enumMemberValues = { enabled = true },
+							functionLikeReturnTypes = { enabled = true },
+							parameterNames = { enabled = "literals" },
+							parameterTypes = { enabled = true },
+							propertyDeclarationTypes = { enabled = true },
+							variableTypes = { enabled = false },
+						},
+					},
+				},
+			}
+			vim.lsp.enable("vtsls", {
 				handlers = handlers,
 				capabilities = capabilities,
 				on_attach = function(client, bufnr)
 					client.server_capabilities.documentFormattingProvider = false
 				end,
-				opts = {
-					-- make sure mason installs the server
-					servers = {
-						--- @deprecated -- tsserver renamed to ts_ls but not yet rel eased, so keep this for now
-						--- the proper approach is to check the nvim-lspconfig release version when it's released to determine the server name dynamically
-						tsserver = {
-							enabled = false,
-						},
-						ts_ls = {
-							enabled = false,
-						},
-						vtsls = {
-							-- explicitly add default filetypes, so that we can extend
-							-- them in related extras
-							filetypes = {
-								"javascript",
-								"javascriptreact",
-								"javascript.jsx",
-								"typescript",
-								"typescriptreact",
-								"typescript.tsx",
-							},
-							settings = {
-								complete_function_calls = true,
-								vtsls = {
-									enableMoveToFileCodeAction = true,
-									autoUseWorkspaceTsdk = true,
-									experimental = {
-										maxInlayHintLength = 30,
-										completion = {
-											enableServerSideFuzzyMatch = true,
-										},
-									},
-								},
-								typescript = {
-									updateImportsOnFileMove = { enabled = "always" },
-									suggest = {
-										completeFunctionCalls = true,
-									},
-									inlayHints = {
-										enumMemberValues = { enabled = true },
-										functionLikeReturnTypes = { enabled = true },
-										parameterNames = { enabled = "literals" },
-										parameterTypes = { enabled = true },
-										propertyDeclarationTypes = { enabled = true },
-										variableTypes = { enabled = false },
-									},
-								},
-							},
-						},
-					},
-				},
 			})
 
-			lspconfig.lua_ls.setup({
-				handlers = handlers,
-				capabilities = capabilities,
-				on_attach = on_attach,
+			vim.lsp.config.lua_ls = {
 				settings = {
 					Lua = {
 						diagnostics = {
@@ -131,12 +114,14 @@ return {
 						},
 					},
 				},
-			})
-
-			lspconfig.rust_analyzer.setup({
+			}
+			vim.lsp.enable("lua_ls", {
 				handlers = handlers,
 				capabilities = capabilities,
 				on_attach = on_attach,
+			})
+
+			vim.lsp.config.rust_analyzer = {
 				settings = {
 					["rust-analyzer"] = {
 						procMacro = {
@@ -147,9 +132,16 @@ return {
 						},
 					},
 				},
+			}
+			vim.lsp.enable("rust_analyzer", {
+				handlers = handlers,
+				capabilities = capabilities,
+				on_attach = on_attach,
 			})
 
-			-- lspconfig.typos_lsp.setup({
+			-- vim.lsp.enable('copilot')
+
+			-- vim.lsp.enable('typos_lsp', {
 			-- 	-- Logging level of the language server. Logs appear in :LspLog. Defaults to error.
 			-- 	cmd_env = { RUST_LOG = "Info" },
 			-- 	init_options = {
