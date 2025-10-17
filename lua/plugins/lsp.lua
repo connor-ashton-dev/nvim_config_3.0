@@ -19,9 +19,12 @@ return {
 			}
 
 			local function on_attach(client, bufnr)
-				-- if vim.lsp.inlay_hint then
-				-- 	vim.lsp.inlay_hint.enable()
-				-- end
+				if vim.lsp.inline_completion then
+					vim.lsp.inline_completion.enable()
+					print("LSP inline completion enabled")
+				else
+					print("LSP inline completion not available")
+				end
 			end
 
 			local servers = {
@@ -139,7 +142,7 @@ return {
 				on_attach = on_attach,
 			})
 
-			-- vim.lsp.enable('copilot')
+			vim.lsp.enable("copilot")
 
 			-- vim.lsp.enable('typos_lsp', {
 			-- 	-- Logging level of the language server. Logs appear in :LspLog. Defaults to error.
