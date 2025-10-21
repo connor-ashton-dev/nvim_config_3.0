@@ -17,6 +17,11 @@ keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
 --remove highlight with ESC
 keymap("n", "<ESC>", ":nohl<CR>", opts)
 
+-- map : to bring up VSCode command palette
+keymap("n", ":", function()
+	vscode.action("workbench.action.showCommands")
+end, opts)
+
 -- map leader w to save
 keymap("n", "<leader>w", ":w<cr>")
 -- move hover to H

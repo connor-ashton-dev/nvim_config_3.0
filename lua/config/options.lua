@@ -1,4 +1,4 @@
-vim.cmd([[colorscheme tokyonight-moon]])
+vim.cmd([[colorscheme tokyonight]])
 
 vim.opt.guicursor = ""
 vim.opt.shell = "/opt/homebrew/bin/fish"
