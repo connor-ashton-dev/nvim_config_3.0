@@ -18,7 +18,7 @@ keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
 keymap("n", "<ESC>", ":nohl<CR>", opts)
 
 -- map : to bring up VSCode command palette
-keymap("n", ":", function()
+keymap("n", "<leader>oc", function()
 	vscode.action("workbench.action.showCommands")
 end, opts)
 
