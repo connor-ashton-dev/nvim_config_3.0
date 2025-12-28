@@ -6,11 +6,11 @@ return {
 		"onsails/lspkind.nvim",
 		"nvim-web-devicons",
 		"L3MON4D3/LuaSnip",
-		version = "v2.*",
+		version = "*",
 	},
 
 	-- use a release tag to download pre-built binaries
-	version = "1.*",
+	version = "*",
 	-- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
 	-- build = 'cargo build --release',
 	-- If you use nix, you can build from source using latest nightly rust with:

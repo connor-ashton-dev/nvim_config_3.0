@@ -64,51 +64,6 @@ return {
 				on_attach = on_attach,
 			})
 
-			vim.lsp.config.vtsls = {
-				filetypes = {
-					"javascript",
-					"javascriptreact",
-					"javascript.jsx",
-					"typescript",
-					"typescriptreact",
-					"typescript.tsx",
-				},
-				settings = {
-					complete_function_calls = true,
-					vtsls = {
-						enableMoveToFileCodeAction = true,
-						autoUseWorkspaceTsdk = true,
-						experimental = {
-							maxInlayHintLength = 30,
-							completion = {
-								enableServerSideFuzzyMatch = true,
-							},
-						},
-					},
-					typescript = {
-						updateImportsOnFileMove = { enabled = "always" },
-						suggest = {
-							completeFunctionCalls = true,
-						},
-						inlayHints = {
-							enumMemberValues = { enabled = true },
-							functionLikeReturnTypes = { enabled = true },
-							parameterNames = { enabled = "literals" },
-							parameterTypes = { enabled = true },
-							propertyDeclarationTypes = { enabled = true },
-							variableTypes = { enabled = false },
-						},
-					},
-				},
-			}
-			vim.lsp.enable("vtsls", {
-				handlers = handlers,
-				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					client.server_capabilities.documentFormattingProvider = false
-				end,
-			})
-
 			vim.lsp.config.lua_ls = {
 				settings = {
 					Lua = {
