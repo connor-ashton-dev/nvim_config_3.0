@@ -1,5 +1,6 @@
 return {
 	"saghen/blink.cmp",
+	event = { "BufReadPre", "BufNewFile" },
 	-- optional: provides snippets for the snippet source
 	dependencies = {
 		"rafamadriz/friendly-snippets",
@@ -88,10 +89,13 @@ return {
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
-		},
-
-		snippets = {
-			search_paths = { vim.fn.stdpath("config") .. "/snippets" },
+			providers = {
+				snippets = {
+					opts = {
+						search_paths = { vim.fn.stdpath("config") .. "/snippets" },
+					},
+				},
+			},
 		},
 
 		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance

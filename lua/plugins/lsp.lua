@@ -97,7 +97,7 @@ return {
 				on_attach = on_attach,
 			})
 
-			vim.lsp.enable("copilot")
+			-- vim.lsp.enable("copilot") -- Requires copilot plugin to be installed
 
 			-- vim.lsp.enable('typos_lsp', {
 			-- 	-- Logging level of the language server. Logs appear in :LspLog. Defaults to error.
