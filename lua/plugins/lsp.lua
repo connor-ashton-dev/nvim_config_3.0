@@ -44,6 +44,7 @@ return {
 				"templ",
 				"tailwindcss",
 				"jsonls",
+				"tsgo",
 			}
 
 			for _, lsp in ipairs(servers) do
@@ -63,6 +64,28 @@ return {
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
+
+			-- vim.lsp.config.tsgo = {
+			-- 	root_dir = function(bufnr, on_dir)
+			-- 		local util = require("lspconfig.util")
+			-- 		local fname = vim.api.nvim_buf_get_name(bufnr)
+			--
+			-- 		local monorepo_root =
+			-- 			util.root_pattern("turbo.json", "pnpm-workspace.yaml", "lerna.json", "nx.json")(fname)
+			-- 		if monorepo_root then
+			-- 			on_dir(monorepo_root)
+			-- 			return
+			-- 		end
+			--
+			-- 		local root = util.root_pattern("package.json", "tsconfig.json")(fname)
+			-- 		on_dir(root or vim.fn.getcwd())
+			-- 	end,
+			-- }
+			-- vim.lsp.enable("tsgo", {
+			-- 	handlers = handlers,
+			-- 	capabilities = capabilities,
+			-- 	on_attach = on_attach,
+			-- })
 
 			vim.lsp.config.lua_ls = {
 				settings = {

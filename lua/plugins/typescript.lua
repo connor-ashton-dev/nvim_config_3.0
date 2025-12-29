@@ -1,10 +1,22 @@
 return {
-	"pmizio/typescript-tools.nvim",
-	ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
-	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-	config = function()
-		require("typescript-tools").setup({
-			publish_diagnostic_on = "change",
-		})
-	end,
+	-- "pmizio/typescript-tools.nvim",
+	-- ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+	-- dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	-- config = function()
+	-- 	local util = require("lspconfig.util")
+	-- 	require("typescript-tools").setup({
+	-- 		publish_diagnostic_on = "change",
+	-- 		single_file_support = false,
+	-- 		root_dir = function(fname)
+	-- 			-- Check for monorepo root first
+	-- 			local monorepo_root =
+	-- 				util.root_pattern("turbo.json", "pnpm-workspace.yaml", "lerna.json", "nx.json")(fname)
+	-- 			if monorepo_root then
+	-- 				return monorepo_root
+	-- 			end
+	-- 			-- Fall back to standard TS project root
+	-- 			return util.root_pattern("package.json", "tsconfig.json")(fname)
+	-- 		end,
+	-- 	})
+	-- end,
 }

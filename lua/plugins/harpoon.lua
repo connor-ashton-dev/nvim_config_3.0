@@ -1,41 +1,65 @@
 return {
 	"ThePrimeagen/harpoon",
-	-- event = { "BufReadPre", "BufNewFile" },
+	branch = "harpoon2",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
 	config = function()
-		-- set keymaps
-		local ui = require("harpoon.ui")
-		local mark = require("harpoon.mark")
+		local harpoon = require("harpoon")
 
-		vim.keymap.set("n", "<leader>ha", mark.add_file)
-		vim.keymap.set("n", "<leader>he", ui.toggle_quick_menu)
+		-- REQUIRED
+		harpoon:setup({
+			settings = {
+				save_on_toggle = true,
+				sync_on_ui_close = true,
+			},
+		})
+		-- REQUIRED
 
+		-- Add file to harpoon list
+		vim.keymap.set("n", "<leader>ha", function()
+			harpoon:list():add()
+		end)
+
+		-- Toggle harpoon quick menu
+		vim.keymap.set("n", "<leader>he", function()
+			harpoon.ui:toggle_quick_menu(harpoon:list())
+		end)
+
+		-- Navigate to harpoon files (hjkl style)
 		vim.keymap.set("n", "<leader>hh", function()
-			ui.nav_file(1)
+			harpoon:list():select(1)
 		end)
 		vim.keymap.set("n", "<leader>hj", function()
-			ui.nav_file(2)
+			harpoon:list():select(2)
 		end)
 		vim.keymap.set("n", "<leader>hk", function()
-			ui.nav_file(3)
+			harpoon:list():select(3)
 		end)
 		vim.keymap.set("n", "<leader>hl", function()
-			ui.nav_file(4)
+			harpoon:list():select(4)
 		end)
 
+		-- Navigate to harpoon files (number style)
 		vim.keymap.set("n", "<leader>1", function()
-			ui.nav_file(1)
+			harpoon:list():select(1)
 		end)
 		vim.keymap.set("n", "<leader>2", function()
-			ui.nav_file(2)
+			harpoon:list():select(2)
 		end)
 		vim.keymap.set("n", "<leader>3", function()
-			ui.nav_file(3)
+			harpoon:list():select(3)
 		end)
 		vim.keymap.set("n", "<leader>4", function()
-			ui.nav_file(4)
+			harpoon:list():select(4)
+		end)
+
+		-- Toggle previous & next buffers stored within Harpoon list
+		vim.keymap.set("n", "<C-S-P>", function()
+			harpoon:list():prev()
+		end)
+		vim.keymap.set("n", "<C-S-N>", function()
+			harpoon:list():next()
 		end)
 	end,
 }

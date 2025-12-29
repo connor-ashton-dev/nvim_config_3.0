@@ -32,6 +32,7 @@ return {
 				"ruff",
 				"pyright",
 				"ts_ls",
+				-- "tsgo",
 				"lua_ls",
 				"jsonls",
 				-- "java_language_server",
