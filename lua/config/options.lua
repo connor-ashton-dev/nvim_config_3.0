@@ -1,4 +1,4 @@
-vim.cmd([[colorscheme tokyonight]])
+vim.cmd([[colorscheme carbonfox]])
 
 vim.opt.guicursor = ""
 vim.opt.shell = "/opt/homebrew/bin/fish"
@@ -30,6 +30,7 @@ vim.opt.fillchars:append({ eob = " " })
 vim.opt.smartindent = false
 vim.opt.cindent = true
 vim.opt.showmode = false
+vim.opt.cmdheight = 1
 
 local format_group = vim.api.nvim_create_augroup("format_options", { clear = true })
 vim.api.nvim_create_autocmd("BufEnter", {
