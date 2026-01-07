@@ -57,6 +57,7 @@ keymap("n", "<leader>e", ":Neotree toggle right reveal <CR>", opts)
 
 -- telescope
 keymap("n", "<leader>rt", ":GrugFar<CR>", opts)
+keymap("n", "<leader>pv", ":Telescope lsp_dynamic_workspace_symbols<CR>", opts)
 
 -- quickfix
 keymap("n", "]q", ":cnext<CR>", opts)

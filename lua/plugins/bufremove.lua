@@ -2,7 +2,7 @@ return {
 	"echasnovski/mini.bufremove",
 	keys = {
 		{
-			"<leader>bd",
+			"<leader>bc",
 			function()
 				local bd = require("mini.bufremove").delete
 				if vim.bo.modified then
@@ -21,6 +21,6 @@ return {
 			desc = "Delete Buffer",
 		},
 		-- stylua: ignore
-		{ "<leader>bc", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
+		{ "<leader>bd", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
 	},
 }

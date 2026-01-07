@@ -44,7 +44,7 @@ return {
 				"templ",
 				"tailwindcss",
 				"jsonls",
-				"tsgo",
+				"vtsls",
 			}
 
 			for _, lsp in ipairs(servers) do
@@ -64,28 +64,6 @@ return {
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
-
-			-- vim.lsp.config.tsgo = {
-			-- 	root_dir = function(bufnr, on_dir)
-			-- 		local util = require("lspconfig.util")
-			-- 		local fname = vim.api.nvim_buf_get_name(bufnr)
-			--
-			-- 		local monorepo_root =
-			-- 			util.root_pattern("turbo.json", "pnpm-workspace.yaml", "lerna.json", "nx.json")(fname)
-			-- 		if monorepo_root then
-			-- 			on_dir(monorepo_root)
-			-- 			return
-			-- 		end
-			--
-			-- 		local root = util.root_pattern("package.json", "tsconfig.json")(fname)
-			-- 		on_dir(root or vim.fn.getcwd())
-			-- 	end,
-			-- }
-			-- vim.lsp.enable("tsgo", {
-			-- 	handlers = handlers,
-			-- 	capabilities = capabilities,
-			-- 	on_attach = on_attach,
-			-- })
 
 			vim.lsp.config.lua_ls = {
 				settings = {
@@ -122,42 +100,8 @@ return {
 
 			-- vim.lsp.enable("copilot") -- Requires copilot plugin to be installed
 
-			-- vim.lsp.enable('typos_lsp', {
-			-- 	-- Logging level of the language server. Logs appear in :LspLog. Defaults to error.
-			-- 	cmd_env = { RUST_LOG = "Info" },
-			-- 	init_options = {
-			-- 		-- Custom config. Used together with a config file found in the workspace or its parents,
-			-- 		-- taking precedence for settings declared in both.
-			-- 		-- Equivalent to the typos `--config` cli argument.
-			-- 		-- config = "~/code/typos-lsp/crates/typos-lsp/tests/typos.toml",
-			-- 		-- How typos are rendered in the editor, can be one of an Error, Warning, Info or Hint.
-			-- 		-- Defaults to error.
-			-- 		diagnosticSeverity = "Info",
-			-- 	},
-			-- })
-
-			-- local signs = {
-			-- 	{ name = "DiagnosticSignError", text = "" },
-			-- 	{ name = "DiagnosticSignWarn", text = "" },
-			-- 	{ name = "DiagnosticSignHint", text = "󰍉" },
-			-- 	{ name = "DiagnosticSignInfo", text = " " },
-			-- }
-			--
-			-- for _, sign in ipairs(signs) do
-			-- 	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-			-- end
-			--
 			local config = {
-				-- disable virtual text
 				virtual_text = true,
-
-				-- inlay_hints = {
-				-- 	enabled = true,
-				-- },
-				-- show signs
-				-- signs = {
-				-- 	active = signs,
-				-- },
 				signs = {
 					text = {
 						[vim.diagnostic.severity.ERROR] = "",
