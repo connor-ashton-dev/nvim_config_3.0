@@ -99,10 +99,10 @@ return {
 				styles = {
 					-- Style to be applied to different syntax groups
 					-- Value is any valid attr-list value for `:help nvim_set_hl`
-					comments = { italic = false },
-					keywords = { italic = false },
-					functions = { italic = false },
-					variables = { italic = false },
+					-- comments = { italic = false },
+					-- keywords = { italic = false },
+					-- functions = { italic = false },
+					-- variables = { italic = false },
 					-- Background styles. Can be "dark", "transparent" or "normal"
 				},
 				-- sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
