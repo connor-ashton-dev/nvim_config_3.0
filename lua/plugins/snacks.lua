@@ -5,7 +5,37 @@ return {
 	---@type snacks.Config
 	opts = {
 		bigfile = { enabled = true },
-		dashboard = { enabled = true },
+		dashboard = {
+			enabled = true,
+			preset = {
+				keys = {
+					{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+					{ icon = " ", key = "g", desc = "Lazygit", action = ":lua Snacks.lazygit()" },
+					{
+						icon = " ",
+						key = "r",
+						desc = "Recent Files",
+						action = ":lua Snacks.dashboard.pick('oldfiles')",
+					},
+					{
+						icon = " ",
+						key = "c",
+						desc = "Config",
+						action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+					},
+					{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
+					{
+						icon = "󰒲 ",
+						key = "L",
+						desc = "Lazy",
+						action = ":Lazy",
+						enabled = package.loaded.lazy ~= nil,
+					},
+					{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
+				},
+			},
+		},
 		explorer = { enabled = true },
 		input = { enabled = true },
 		picker = {
@@ -41,7 +71,16 @@ return {
 				return true
 			end,
 		},
-		lazygit = { enabled = true },
+		lazygit = {
+			enabled = true,
+			win = {
+				position = "float",
+				backdrop = false,
+				width = 0,
+				height = 0,
+				border = "none",
+			},
+		},
 	},
 	keys = {
 		-- Top Pickers & Explorer
@@ -138,13 +177,13 @@ return {
 			nowait = true,
 			desc = "References",
 		},
-		{
-			"<leader>vv",
-			function()
-				Snacks.picker.treesitter()
-			end,
-			nowait = true,
-			desc = "Treesitter",
-		},
+		-- {
+		-- 	"<leader>vv",
+		-- 	function()
+		-- 		Snacks.picker.treesitter()
+		-- 	end,
+		-- 	nowait = true,
+		-- 	desc = "Treesitter",
+		-- },
 	},
 }

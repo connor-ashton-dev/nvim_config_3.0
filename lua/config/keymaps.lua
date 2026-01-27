@@ -58,6 +58,7 @@ keymap("n", "<leader>e", ":Neotree toggle right reveal <CR>", opts)
 -- telescope
 keymap("n", "<leader>rt", ":GrugFar<CR>", opts)
 keymap("n", "<leader>pv", ":Telescope lsp_dynamic_workspace_symbols<CR>", opts)
+keymap("n", "<leader>vv", ":Telescope lsp_document_symbols<CR>", opts)
 
 -- quickfix
 keymap("n", "]q", ":cnext<CR>", opts)
@@ -105,6 +106,6 @@ end, opts)
 
 -- lazygit
 
-keymap("n", "<leader>gg", ":tab Git<CR>", opts)
-keymap("n", "<leader>gt", ":lua Snacks.lazygit()<CR>", opts)
+keymap("n", "<leader>gf", ":tab Git<CR>", opts)
+keymap("n", "<leader>gg", ":lua Snacks.lazygit()<CR>", opts)
 keymap("n", "<leader>gd", ":DiffviewOpen<CR>", opts)
