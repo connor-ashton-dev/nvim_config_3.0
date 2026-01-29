@@ -10,7 +10,8 @@ vim.g.editorconfig = true
 --sets clipboard to system
 vim.opt.clipboard = "unnamed"
 
-vim.opt.ignorecase = false
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 vim.g.lazygit_config = false
 
 vim.opt.ruler = false
