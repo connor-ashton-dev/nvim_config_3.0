@@ -50,8 +50,8 @@ keymap("n", "<C-Down>", ":resize -2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
---explorer
-keymap("n", "<leader>e", ":Neotree toggle right reveal <CR>", opts)
+--explorer (yazi.nvim handles <leader>e keybind)
+-- keymap("n", "<leader>e", ":Neotree toggle right reveal <CR>", opts)
 -- keymap("n", "<leader>e", ":lua Snacks.explorer()<CR>", opts)
 -- keymap("n", "<leader>e", ":Oil<CR>", opts)
 
