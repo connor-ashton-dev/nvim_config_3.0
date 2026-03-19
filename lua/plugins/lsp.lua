@@ -129,19 +129,18 @@ return {
 					vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 					-- Buffer local mappings.
 					-- See `:help vim.lsp.*` for documentation on any of the below functions
-					local opts = {}
-					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
 					-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-					vim.keymap.set("n", "ca", vim.lsp.buf.code_action, opts)
+					vim.keymap.set("n", "ca", vim.lsp.buf.code_action, { desc = "Code action" })
 					vim.keymap.set("n", "H", function()
 						vim.lsp.buf.hover({
 							border = "rounded",
 						})
-					end, opts)
-					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-					vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
-					vim.keymap.set("n", "gn", vim.diagnostic.goto_next, opts)
-					vim.keymap.set("n", "gp", vim.diagnostic.goto_prev, opts)
+					end, { desc = "Hover" })
+					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
+					vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Line diagnostics" })
+					vim.keymap.set("n", "gn", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+					vim.keymap.set("n", "gp", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
 					--get previous diagnostic
 					-- p = { "<cmd>lua vim.diagnostic.goto_prev({float = true})<CR>", "Previous Diagnostic" },
 					-- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
@@ -151,13 +150,13 @@ return {
 					--     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 					-- end, opts)
 					--vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-					vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+					vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
 					-- vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
-					vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+					vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "References" })
 					vim.keymap.set("n", "<space>fd", function()
 						-- vim.lsp.buf.format({ async = true })
 						require("conform").format()
-					end, opts)
+					end, { desc = "Format document" })
 				end,
 			})
 

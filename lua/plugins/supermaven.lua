@@ -8,7 +8,7 @@ return {
 				clear_suggestion = "<C-]>",
 				accept_word = "<C-j>",
 			},
-			ignore_filetypes = { "dap-repl" },
+			ignore_filetypes = { "dap-repl", "grug-far" },
 		})
 	end,
 }

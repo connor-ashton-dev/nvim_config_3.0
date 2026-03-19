@@ -177,13 +177,19 @@ return {
 			nowait = true,
 			desc = "References",
 		},
-		-- {
-		-- 	"<leader>vv",
-		-- 	function()
-		-- 		Snacks.picker.treesitter()
-		-- 	end,
-		-- 	nowait = true,
-		-- 	desc = "Treesitter",
-		-- },
+		{
+			"<leader>pv",
+			function()
+				Snacks.picker.lsp_workspace_symbols()
+			end,
+			desc = "Workspace symbols",
+		},
+		{
+			"<leader>vv",
+			function()
+				Snacks.picker.lsp_symbols()
+			end,
+			desc = "Document symbols",
+		},
 	},
 }

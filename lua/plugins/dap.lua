@@ -24,24 +24,15 @@ return {
 			local dap = require("dap")
 			local dapui = require("dapui")
 
-			-- Setup dap-ui
 			dapui.setup({
 				controls = { enabled = false },
 			})
 
 			-- Auto open/close UI
-			dap.listeners.before.attach.dapui_config = function()
-				dapui.open()
-			end
-			dap.listeners.before.launch.dapui_config = function()
-				dapui.open()
-			end
-			dap.listeners.before.event_terminated.dapui_config = function()
-				dapui.close()
-			end
-			dap.listeners.before.event_exited.dapui_config = function()
-				dapui.close()
-			end
+			dap.listeners.before.attach.dapui_config = function() dapui.open() end
+			dap.listeners.before.launch.dapui_config = function() dapui.open() end
+			dap.listeners.before.event_terminated.dapui_config = function() dapui.close() end
+			dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
 
 			-- Breakpoint icons
 			vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DiagnosticError" })
@@ -50,33 +41,35 @@ return {
 			vim.fn.sign_define("DapStopped", { text = "→", texthl = "DiagnosticOk", linehl = "Visual" })
 			vim.fn.sign_define("DapBreakpointRejected", { text = "○", texthl = "DiagnosticError" })
 
-			-- Setup vscode-js-debug adapter (installed via :MasonInstall js-debug-adapter)
-			local js_debug_path = vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js"
+			-- js-debug adapter (installed via :MasonInstall js-debug-adapter)
+			local js_debug_path = vim.fn.stdpath("data")
+				.. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js"
 
-			dap.adapters["pwa-node"] = {
-				type = "server",
-				host = "localhost",
-				port = "${port}",
-				executable = {
-					command = "node",
-					args = { js_debug_path, "${port}" },
-				},
-			}
-
-			dap.adapters["pwa-chrome"] = {
-				type = "server",
-				host = "localhost",
-				port = "${port}",
-				executable = {
-					command = "node",
-					args = { js_debug_path, "${port}" },
-				},
-			}
+			for _, name in ipairs({ "pwa-node", "node", "node-terminal", "pwa-chrome" }) do
+				dap.adapters[name] = {
+					type = "server",
+					host = "localhost",
+					port = "${port}",
+					executable = {
+						command = "node",
+						args = { js_debug_path, "${port}" },
+						detached = false,
+					},
+				}
+			end
 
 			-- JS/TS configurations
 			for _, language in ipairs({ "typescript", "javascript", "typescriptreact", "javascriptreact" }) do
 				dap.configurations[language] = {
-					-- Node.js - attach to running process
+					{
+						type = "pwa-node",
+						request = "attach",
+						name = "Attach to dev:debug",
+						port = 9229,
+						cwd = "${workspaceFolder}",
+						restart = true,
+						skipFiles = { "<node_internals>/**" },
+					},
 					{
 						type = "pwa-node",
 						request = "attach",
@@ -84,46 +77,13 @@ return {
 						processId = require("dap.utils").pick_process,
 						cwd = "${workspaceFolder}",
 					},
-					-- Node.js - launch file
 					{
 						type = "pwa-node",
 						request = "launch",
-						name = "Launch Current File (Node)",
+						name = "Launch Current File",
 						program = "${file}",
 						cwd = "${workspaceFolder}",
 					},
-					-- Node.js - launch with ts-node
-					{
-						type = "pwa-node",
-						request = "launch",
-						name = "Launch Current File (ts-node)",
-						cwd = vim.fn.getcwd(),
-						runtimeArgs = { "--loader", "ts-node/esm" },
-						program = "${file}",
-						sourceMaps = true,
-						protocol = "inspector",
-						skipFiles = { "<node_internals>/**", "node_modules/**" },
-						resolveSourceMapLocations = {
-							"${workspaceFolder}/**",
-							"!**/node_modules/**",
-						},
-					},
-					-- Jest
-					{
-						type = "pwa-node",
-						request = "launch",
-						name = "Debug Jest Tests",
-						runtimeExecutable = "node",
-						runtimeArgs = {
-							"./node_modules/jest/bin/jest.js",
-							"--runInBand",
-						},
-						rootPath = "${workspaceFolder}",
-						cwd = "${workspaceFolder}",
-						console = "integratedTerminal",
-						internalConsoleOptions = "neverOpen",
-					},
-					-- Chrome
 					{
 						type = "pwa-chrome",
 						request = "launch",
